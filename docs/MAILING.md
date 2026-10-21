@@ -30,10 +30,11 @@
 방문자(anon)는 email, os, beta, source만 넣을 수 있다.
 
 ## 신청 저장 (`app/actions.ts`)
-- zod로 검증: 이메일 형식, 동의 체크, os 값, 숨은 칸 비어 있음
+- 숨은 칸(website)에 값이 있으면 봇으로 보고 저장하지 않음 → `{ status: "ignored" }` (화면에 메시지 없이 조용히 무시)
+- zod로 검증: 이메일 형식, 동의 체크, os 값
 - 성공 → `{ status: "ok" }`
 - Postgres 고유 제약 위반(23505) → `{ status: "duplicate" }` → "이미 신청하신 이메일이에요."
-- 그 밖의 오류 → `{ status: "error" }` → "신청을 저장하지 못했어요. 잠시 뒤 다시 눌러 주세요."
+- 그 밖의 오류(검증 실패 포함) → `{ status: "error" }` → "신청을 저장하지 못했어요. 잠시 뒤 다시 눌러 주세요."
 
 ## 발송 함수 `send-launch-mail`
 요청: `POST`, 헤더 `x-admin-secret: <ADMIN_SECRET>`, 본문 JSON
