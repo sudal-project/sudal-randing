@@ -25,8 +25,8 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] 데스크톱 1280px 브라우저로 확인 (라이트·다크, 재생/일시정지/카드 이동 모두 동작 확인). 모바일 390px은 이 환경의 브라우저 자동화 창 크기 조절이 반영되지 않아 라이브 비교는 못 함 — 미디어쿼리는 시안 그대로 포팅
 
 ## 4. 신청 저장
-- [ ] Supabase 프로젝트 생성, `supabase init`, `supabase link`
-- [ ] `supabase db push` (마이그레이션 2개)
+- [x] Supabase 프로젝트 생성, `supabase init`, `supabase link`
+- [x] `supabase db push` (마이그레이션 2개)
 - [ ] `lib/supabase/server.ts`, `lib/validation.ts`(zod)
 - [ ] `app/actions.ts`: ok / duplicate / error
 - [ ] `WaitlistForm` (hero / full 두 가지), `ConsentDetails`
