@@ -32,21 +32,21 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] `WaitlistForm` (hero / full 두 가지), `ConsentDetails`
 - [x] 직접 신청해 보고 Table Editor에서 확인. 같은 이메일 두 번 → "이미 신청" 확인
 
-## 5. 배포
-- [ ] Vercel 연결, 환경 변수 `SUPABASE_URL`, `SUPABASE_ANON_KEY`
-- [ ] 도메인 연결
-- [ ] `app/opengraph-image.png`, `app/icon.png`
-- [ ] 모바일 실기기에서 화면·폼 확인
-- [ ] `app/privacy/page.tsx` 개인정보 안내 전문
-
-## 6. 출시 메일 (출시 전까지)
+## 5. 출시 메일 (Supabase Edge Functions, Vercel 배포와 무관하게 먼저 준비 가능)
 - [ ] Resend 가입, 도메인 인증(SPF·DKIM)
 - [ ] `supabase/functions/send-launch-mail` (dry_run / test / send)
 - [ ] `supabase/functions/unsubscribe` + `app/unsubscribed/page.tsx`
-- [ ] secrets 설정: RESEND_API_KEY, ADMIN_SECRET, MAIL_FROM, SITE_URL
+- [ ] secrets 설정: RESEND_API_KEY, ADMIN_SECRET, MAIL_FROM, SITE_URL (배포 전엔 임시값, 배포 후 실제 도메인으로 교체)
 - [ ] 메일 템플릿 문구 (`supabase/functions/send-launch-mail/template.ts`)
 - [ ] `scripts/send-launch-mail.sh`: 모드를 골라 함수를 호출하는 스크립트
 - [ ] 리허설: 내 메일 몇 개로 신청 → dry_run → test → send → 수신 거부까지
+
+## 6. 배포 (개발 마지막 단계)
+- [ ] Vercel 연결, 환경 변수 `SUPABASE_URL`, `SUPABASE_ANON_KEY`
+- [ ] 도메인 연결, SITE_URL secret을 실제 도메인으로 교체
+- [ ] `app/opengraph-image.png`, `app/icon.png`
+- [ ] 모바일 실기기에서 화면·폼 확인
+- [ ] `app/privacy/page.tsx` 개인정보 안내 전문
 
 ## 나중에
 - [ ] 방문·신청 수 분석 (Vercel Analytics 등)
