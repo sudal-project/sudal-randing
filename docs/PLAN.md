@@ -3,10 +3,10 @@
 Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치면 체크하고 커밋한다. 막히거나 정할 게 생기면 멈추고 묻는다.
 
 ## 1. 프로젝트 뼈대
-- [ ] Next.js(App Router, TypeScript, ESLint) 생성. Tailwind 없이 CSS Modules
-- [ ] `app/globals.css`에 DESIGN.md 토큰 (라이트·다크)
-- [ ] `app/layout.tsx`: next/font로 Jua, IBM Plex Sans KR, Silkscreen / 한국어 메타데이터
-- [ ] `.env.example` 확인, `.gitignore`에 `.env.local`
+- [x] Next.js(App Router, TypeScript, ESLint) 생성. Tailwind 없이 CSS Modules
+- [x] `app/globals.css`에 DESIGN.md 토큰 (라이트·다크)
+- [x] `app/layout.tsx`: next/font로 Jua, IBM Plex Sans KR, Silkscreen / 한국어 메타데이터
+- [x] `.env.example` 확인, `.gitignore`에 `.env.local`
 
 ## 2. 정적 섹션 옮기기 (시안 기준)
 - [ ] `lib/content.ts`: 상태 5개, 집 5단계, 4단계 흐름, 로드맵 문구
