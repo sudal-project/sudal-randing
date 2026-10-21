@@ -1,0 +1,61 @@
+.cta {
+  background: var(--band);
+  color: var(--band-ink);
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding-block: 80px;
+}
+
+.wrap h2 {
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+.lead {
+  margin-top: 14px;
+  color: var(--band-soft);
+  max-width: 28em;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--band-ink);
+}
+
+.pill i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.otters {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  margin-top: 28px;
+}
+
+.otters img {
+  height: 64px;
+  width: auto;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-block: 56px;
+  }
+}

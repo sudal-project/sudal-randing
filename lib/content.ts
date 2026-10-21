@@ -286,3 +286,42 @@ export const footer = {
   copyright: "© 2026 수달공방 (Otter Workshop)",
   tagline: "Windows · macOS 데스크톱 앱 · 출시 준비 중",
 };
+
+export const waitlistForm = {
+  emailLabel: "이메일",
+  emailPlaceholder: "name@example.com",
+  osLegend: "사용하는 OS",
+  osOptions: [
+    { value: "windows", label: "Windows" },
+    { value: "macos", label: "macOS" },
+  ] as const,
+  betaLabel: "출시 전 테스트에 참여하고 싶어요",
+  betaFine: "(선택)",
+  agreeLabel: "(필수) 개인정보 수집·이용에 동의합니다",
+  heroCta: "출시 알림 받기",
+  footerCta: "출시 알림 신청하기",
+  pendingCta: "신청하는 중…",
+  invalidEmail: "이메일 주소를 다시 확인해 주세요. 예: name@example.com",
+  needAgree: "출시 알림을 보내려면 개인정보 수집·이용에 동의해 주세요.",
+  messages: {
+    ok: "신청했어요! 출시하는 날 이 메일로 알려드릴게요.",
+    duplicate: "이미 신청하신 이메일이에요. 출시하는 날 알려드릴게요.",
+    error: "신청을 저장하지 못했어요. 잠시 뒤 다시 눌러 주세요.",
+  },
+} as const;
+
+export const consentDetails = {
+  summary: "자세히 보기",
+  rows: [
+    { term: "수집 항목", desc: "이메일 주소, 사용하는 OS(선택), 테스트 참여 의향(선택)" },
+    { term: "수집 목적", desc: "서비스 출시 알림 발송, 출시 전 테스트 안내" },
+    { term: "보유 기간", desc: "출시 알림 발송 후 파기" },
+    { term: "거부 권리", desc: "동의하지 않을 수 있으며, 동의하지 않으면 출시 알림을 받을 수 없어요." },
+  ],
+};
+
+export const joinSection = {
+  pill: "출시 준비 중",
+  heading: "출시되면\n가장 먼저 알려드릴게요",
+  lead: "수달공방은 아직 출시 전인 Windows · macOS 데스크톱 앱이에요. 지금 신청하면 출시하는 날 메일로 알려드려요. 앱을 내려받거나 결제하는 절차는 없어요.",
+};

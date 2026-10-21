@@ -1,0 +1,31 @@
+.policy {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.policy summary {
+  cursor: pointer;
+  display: inline;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 10px 0 0;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.grid dt {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.grid dd {
+  margin: 0;
+}

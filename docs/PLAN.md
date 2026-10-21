@@ -27,10 +27,10 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 ## 4. 신청 저장
 - [x] Supabase 프로젝트 생성, `supabase init`, `supabase link`
 - [x] `supabase db push` (마이그레이션 2개)
-- [ ] `lib/supabase/server.ts`, `lib/validation.ts`(zod)
-- [ ] `app/actions.ts`: ok / duplicate / error
-- [ ] `WaitlistForm` (hero / full 두 가지), `ConsentDetails`
-- [ ] 직접 신청해 보고 Table Editor에서 확인. 같은 이메일 두 번 → "이미 신청" 확인
+- [x] `lib/supabase/server.ts`, `lib/validation.ts`(zod)
+- [x] `app/actions.ts`: ok / duplicate / error
+- [x] `WaitlistForm` (hero / full 두 가지), `ConsentDetails`
+- [x] 직접 신청해 보고 Table Editor에서 확인. 같은 이메일 두 번 → "이미 신청" 확인
 
 ## 5. 배포
 - [ ] Vercel 연결, 환경 변수 `SUPABASE_URL`, `SUPABASE_ANON_KEY`

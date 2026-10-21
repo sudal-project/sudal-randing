@@ -1,0 +1,156 @@
+.hero {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 26px;
+  display: grid;
+  gap: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.row .emailInput {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.emailInput {
+  width: 100%;
+  font: 16px var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.emailInput[aria-invalid="true"] {
+  border-color: #c4472f;
+}
+
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.legend {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  padding: 0;
+}
+
+.seg {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.seg label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.consent input {
+  width: 18px;
+  height: 18px;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+  flex: none;
+}
+
+.fine {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--paper);
+  font: 700 15px/1 var(--font-body);
+  padding: 14px 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, #000);
+  transition: filter 0.08s, transform 0.08s, box-shadow 0.08s;
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 60%, #000);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.card .btn {
+  width: 100%;
+}
+
+.msg {
+  font-size: 14px;
+  min-height: 1.4em;
+  font-weight: 500;
+}
+
+.ok {
+  color: var(--leaf);
+}
+
+.err {
+  color: #c4472f;
+}

@@ -9,6 +9,8 @@
   --leaf: #6f9a54;
   --river: #5aaec0;
   --band: #4a3222;
+  --band-ink: #f6ead8;
+  --band-soft: #c9b39a;
 
   --font-heading: var(--font-jua), sans-serif;
   --font-body: var(--font-ibm-plex-sans-kr), sans-serif;
@@ -28,6 +30,8 @@
     --leaf: #93bd76;
     --river: #7cc3d2;
     --band: #120d09;
+    --band-ink: #f3e7d6;
+    --band-soft: #a8927a;
   }
 }
 
@@ -42,6 +46,8 @@
   --leaf: #93bd76;
   --river: #7cc3d2;
   --band: #120d09;
+  --band-ink: #f3e7d6;
+  --band-soft: #a8927a;
 }
 
 [data-theme="light"] {
@@ -55,6 +61,8 @@
   --leaf: #6f9a54;
   --river: #5aaec0;
   --band: #4a3222;
+  --band-ink: #f6ead8;
+  --band-soft: #c9b39a;
 }
 
 * {
