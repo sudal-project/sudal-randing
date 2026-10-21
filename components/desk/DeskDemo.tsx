@@ -29,7 +29,10 @@ export default function DeskDemo() {
 
   const [studySeconds, setStudySeconds] = useState(0);
   const [housePct, setHousePct] = useState(0);
-  const [houses, setHouses] = useState(0);
+  // 완성 직후 1.6초 동안은 방금 지은 집 번호·마을 수를 그대로 보여준다 (다음 집 번호로 먼저 넘어가지 않도록
+  // houseNumber/villageCount는 houses가 아니라 "다음 집이 시작되는 시점"에만 갱신한다).
+  const [houseNumber, setHouseNumber] = useState(1);
+  const [villageCount, setVillageCount] = useState(0);
 
   const houseSecondsRef = useRef(0);
   const housesRef = useRef(0);
@@ -38,6 +41,7 @@ export default function DeskDemo() {
 
   useEffect(() => {
     prevRef.current = Date.now();
+    let freezeTimeout: ReturnType<typeof setTimeout> | undefined;
     const id = setInterval(() => {
       const now = Date.now();
       const dt = (now - prevRef.current) / 1000;
@@ -49,12 +53,13 @@ export default function DeskDemo() {
         if (houseSecondsRef.current >= GOAL_SECONDS) {
           houseSecondsRef.current = GOAL_SECONDS;
           housesRef.current += 1;
-          setHouses(housesRef.current);
           setHousePct(100);
           doneUntilRef.current = now + DONE_FREEZE_MS;
-          setTimeout(() => {
+          freezeTimeout = setTimeout(() => {
             houseSecondsRef.current = 0;
             setHousePct(0);
+            setHouseNumber((housesRef.current % 6) + 1);
+            setVillageCount(housesRef.current % 6);
           }, DONE_FREEZE_MS);
         }
       }
@@ -62,12 +67,15 @@ export default function DeskDemo() {
         setHousePct(Math.min(100, Math.round((houseSecondsRef.current / GOAL_SECONDS) * 100)));
       }
     }, TICK_MS);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      if (freezeTimeout) clearTimeout(freezeTimeout);
+    };
   }, []);
 
   const stage = stageFor(housePct);
-  const houseLabel = `${(houses % 6) + 1}번째 집 · ${stage.label}`;
-  const villageText = `마을 ${houses % 6}/6`;
+  const houseLabel = `${houseNumber}번째 집 · ${stage.label}`;
+  const villageText = `마을 ${villageCount}/6`;
 
   return (
     <div>
