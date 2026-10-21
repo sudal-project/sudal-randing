@@ -1,8 +1,9 @@
+import HouseScene from "@/components/scenes/HouseScene";
 import { howItWorks } from "@/lib/content";
 import styles from "./HowItWorks.module.css";
 
 export default function HowItWorks() {
-  const [stepStart, stepRecord] = howItWorks.steps;
+  const { stepStart, stepHouse, stepRecord } = howItWorks;
 
   return (
     <section className={styles.how} id="how">
@@ -38,7 +39,16 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        {/* 02(집 짓기 자동 재생 장면)는 HouseScene 클라이언트 컴포넌트와 함께 3단계에서 추가한다. */}
+        <div className={`${styles.step} ${styles.wide}`}>
+          <div className={styles.intro}>
+            <div className={styles.txt}>
+              <span className={styles.num}>{stepHouse.num}</span>
+              <h3 style={{ whiteSpace: "pre-line" }}>{stepHouse.heading}</h3>
+            </div>
+            <p>{stepHouse.body}</p>
+          </div>
+          <HouseScene />
+        </div>
 
         <div className={styles.step}>
           <div className={styles.txt}>

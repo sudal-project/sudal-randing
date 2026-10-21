@@ -1,0 +1,192 @@
+.build {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--paper) 0 58%, var(--accent-soft) 58% 100%);
+}
+
+.hud {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 6%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.hud b {
+  white-space: nowrap;
+}
+
+.track {
+  flex: 1;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.track i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 14px, color-mix(in srgb, var(--accent) 82%, white) 14px 28px);
+}
+
+.clock {
+  font-size: 14px;
+}
+
+.worker {
+  position: absolute;
+  left: 18%;
+  bottom: 17%;
+  width: 14%;
+  height: 30%;
+  display: grid;
+  place-items: end center;
+}
+
+.worker img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.lot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 17%;
+  width: 34%;
+  height: 64%;
+  display: grid;
+  place-items: end center;
+}
+
+.lot img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pop {
+  animation: pop 0.45s ease-out;
+}
+
+.sparkle {
+  position: absolute;
+  left: 50%;
+  bottom: 62%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 2.2vw, 24px);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 4px 14px;
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  white-space: nowrap;
+  animation: pop 0.45s ease-out;
+}
+
+.village {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+}
+
+.vframe {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 900 / 470;
+  overflow: hidden;
+}
+
+.vframe img {
+  position: absolute;
+  width: 111.12%;
+  max-width: none;
+  left: -10.56%;
+  top: -8.51%;
+}
+
+.plot {
+  position: absolute;
+  width: 14.4%;
+  transform: translateX(-50%);
+}
+
+.plot img {
+  display: block;
+  width: 100%;
+  animation: pop 0.45s ease-out;
+}
+
+.badge {
+  position: absolute;
+  left: 1%;
+  top: 2%;
+  min-width: 15%;
+  text-align: center;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-weight: 700;
+  font-size: clamp(11px, 1.4vw, 15px);
+  font-variant-numeric: tabular-nums;
+}
+
+.villageDone {
+  position: absolute;
+  left: 50%;
+  top: 13%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 2.2vw, 24px);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 4px 14px;
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  white-space: nowrap;
+  animation: pop 0.45s ease-out;
+}
+
+@media (max-width: 520px) {
+  .build {
+    background: linear-gradient(var(--paper) 0 50%, var(--accent-soft) 50% 100%);
+  }
+
+  .lot {
+    width: 58%;
+    height: 40%;
+    bottom: 30%;
+    left: 58%;
+  }
+
+  .worker {
+    left: 3%;
+    width: 30%;
+    bottom: 30%;
+    height: 20%;
+  }
+
+  .hud {
+    flex-wrap: wrap;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .track {
+    flex-basis: 100%;
+    order: 3;
+  }
+}

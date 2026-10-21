@@ -222,6 +222,17 @@ section {
   }
 }
 
+.taskbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7%;
+  background: color-mix(in srgb, var(--paper) 70%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--line);
+}
+
 @keyframes pop {
   0% {
     transform: scale(0.6);
