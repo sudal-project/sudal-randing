@@ -1,4 +1,5 @@
 import DeskDemo from "@/components/desk/DeskDemo";
+import WaitlistForm from "@/components/waitlist/WaitlistForm";
 import { hero } from "@/lib/content";
 import styles from "./Hero.module.css";
 
@@ -18,7 +19,7 @@ export default function Hero() {
           </h1>
           <p className={styles.lede}>{hero.lede}</p>
 
-          {/* 신청 폼(WaitlistForm)은 4단계에서 추가한다. */}
+          <WaitlistForm variant="hero" />
 
           <ul className={styles.ticks}>
             {hero.ticks.map((tick) => (

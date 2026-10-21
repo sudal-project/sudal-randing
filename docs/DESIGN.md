@@ -21,6 +21,8 @@
 | --leaf | #6f9a54 | #93bd76 | "공부 시간 쌓임" 표시, 성공 메시지 |
 | --river | #5aaec0 | #7cc3d2 | 포커스 링 |
 | --band | #4a3222 | #120d09 | 하단 신청 영역 배경 |
+| --band-ink | #f6ead8 | #f3e7d6 | 하단 신청 영역 글자 |
+| --band-soft | #c9b39a | #a8927a | 하단 신청 영역 보조 글자 |
 
 다크는 `prefers-color-scheme: dark`와 `[data-theme="dark"]` 둘 다 대응.
 
