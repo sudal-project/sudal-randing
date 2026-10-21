@@ -109,7 +109,9 @@
   overflow: hidden;
 }
 
-.vframe img {
+/* 배경 마을 그림(.vframe의 직접 자식 img)에만 적용. 자손 선택자로 쓰면 집터(.plot) 안의
+   완성 집 이미지까지 걸려 자리를 벗어나므로 반드시 직계 자식 선택자를 쓴다. */
+.vframe > img {
   position: absolute;
   width: 111.12%;
   max-width: none;
