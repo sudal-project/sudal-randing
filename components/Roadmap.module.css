@@ -1,0 +1,46 @@
+.road {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.road article {
+  border-top: 3px solid var(--line);
+  padding-top: 16px;
+}
+
+.road .now {
+  border-top-color: var(--accent);
+}
+
+.version {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.road h3 {
+  font-size: 21px;
+  margin-top: 4px;
+}
+
+.road ul {
+  margin: 10px 0 0;
+  padding-left: 1.1em;
+  font-size: 14px;
+  color: var(--ink-soft);
+  display: grid;
+  gap: 3px;
+}
+
+@media (max-width: 900px) {
+  .road {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .road {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,9 @@
+.inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-block: 28px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}

@@ -9,11 +9,11 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] `.env.example` 확인, `.gitignore`에 `.env.local`
 
 ## 2. 정적 섹션 옮기기 (시안 기준)
-- [ ] `lib/content.ts`: 상태 5개, 집 5단계, 4단계 흐름, 로드맵 문구
-- [ ] Header, Footer
-- [ ] HowItWorks 01·03 (02는 3단계에서 장면으로)
-- [ ] PrivacyNote, Roadmap
-- [ ] 900px · 520px 반응형, 다크 모드 확인
+- [x] `lib/content.ts`: 상태 5개, 집 5단계, 4단계 흐름, 로드맵 문구
+- [x] Header, Footer
+- [x] HowItWorks 01·03 (02는 3단계에서 장면으로)
+- [x] PrivacyNote, Roadmap
+- [x] 900px · 520px 반응형, 다크 모드 확인
 
 ## 3. 수달 데모와 자동 재생 장면
 - [ ] `OtterSprite.tsx`: 프로젝트 수달 그림 + 상태별 CSS 움직임 (직접 그린 수달 쓰지 않음)
