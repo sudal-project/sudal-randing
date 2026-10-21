@@ -1,8 +1,19 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import HowItWorks from "@/components/HowItWorks";
+import PrivacyNote from "@/components/PrivacyNote";
+import Roadmap from "@/components/Roadmap";
+
 export default function Home() {
   return (
-    <main>
-      <h1 style={{ fontFamily: "var(--font-heading)" }}>수달공방</h1>
-      <p>뼈대 세팅 완료. 섹션은 다음 단계에서 옮긴다.</p>
-    </main>
+    <>
+      <Header />
+      <main>
+        <HowItWorks />
+        <PrivacyNote />
+        <Roadmap />
+      </main>
+      <Footer />
+    </>
   );
 }

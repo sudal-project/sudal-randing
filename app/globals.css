@@ -13,6 +13,7 @@
   --font-heading: var(--font-jua), sans-serif;
   --font-body: var(--font-ibm-plex-sans-kr), sans-serif;
   --font-mono: var(--font-silkscreen), monospace;
+  --radius: 14px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,6 +71,175 @@ body {
   background: var(--sand);
   color: var(--ink);
   font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.25;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--river);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.mark {
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 0.08em;
+}
+
+section {
+  padding-block: 88px;
+}
+
+.secHead {
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.secHead h2 {
+  font-size: clamp(28px, 3.6vw, 40px);
+}
+
+.secHead p {
+  color: var(--ink-soft);
+  font-size: 17px;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--sand);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.chipOn {
+  background: color-mix(in srgb, var(--leaf) 18%, transparent);
+  border-color: color-mix(in srgb, var(--leaf) 40%, transparent);
+  color: var(--leaf);
+}
+
+/* 수달 상태별 CSS 움직임. OtterSprite(3단계)를 비롯해 정적 목업에서도 재사용한다. */
+.sprite {
+  display: block;
+  transform-origin: 50% 100%;
+}
+
+.sprite.work {
+  animation: tap 0.5s linear infinite;
+}
+
+.sprite.sleepy {
+  animation: sway 1.8s ease-in-out infinite alternate;
+}
+
+.sprite.sleep,
+.sprite.idle {
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+.sprite.surprise {
+  animation: jump 0.5s ease-out;
+}
+
+@keyframes tap {
+  0%,
+  49% {
+    transform: none;
+  }
+  50%,
+  100% {
+    transform: rotate(-3deg) translateY(-3%);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-2.5deg);
+  }
+  to {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.02, 0.965);
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-14%) scale(1.04);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    padding-block: 64px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
