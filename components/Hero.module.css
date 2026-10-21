@@ -1,0 +1,47 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 56px;
+  align-items: center;
+  padding-block: 56px 72px;
+}
+
+.heading {
+  font-size: clamp(34px, 4.2vw, 50px);
+  margin-top: 14px;
+  text-wrap: initial;
+}
+
+.lede {
+  margin-top: 18px;
+  font-size: 18px;
+  color: var(--ink-soft);
+  max-width: 30em;
+}
+
+.ticks {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.ticks li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ticks svg {
+  flex: none;
+  color: var(--leaf);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}

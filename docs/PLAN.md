@@ -16,13 +16,13 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] 900px · 520px 반응형, 다크 모드 확인
 
 ## 3. 수달 데모와 자동 재생 장면
-- [ ] `OtterSprite.tsx`: 프로젝트 수달 그림 + 상태별 CSS 움직임 (직접 그린 수달 쓰지 않음)
-- [ ] `useIdleState.ts`: 입력 감지와 상태 전환 (5초 / 10초 / 0.6초)
-- [ ] `DeskDemo.tsx`: 타이머, 집 진행도, 마을 카운트, 안내 문구 → Hero 조립
-- [ ] `ScenePlayer.tsx`: 장면 + 자막 바 + 아래 단계 카드, 자동 재생·일시정지·카드 클릭 이동
-- [ ] `RestScene.tsx`: 대기 → 작업 → 졸림 → 잠듦 → 깜짝 놀람 (States 섹션)
-- [ ] `HouseScene.tsx`: 터 다지기 → 뼈대 → 벽 → 지붕 → 완성 → 마을 (HowItWorks 02)
-- [ ] 시안과 나란히 놓고 비교: 데스크톱 1280px, 모바일 390px
+- [x] `OtterSprite.tsx`: 프로젝트 수달 그림 + 상태별 CSS 움직임 (직접 그린 수달 쓰지 않음)
+- [x] `useIdleState.ts`: 입력 감지와 상태 전환 (5초 / 10초 / 0.6초)
+- [x] `DeskDemo.tsx`: 타이머, 집 진행도, 마을 카운트, 안내 문구 → Hero 조립
+- [x] `ScenePlayer.tsx`: 장면 + 자막 바 + 아래 단계 카드, 자동 재생·일시정지·카드 클릭 이동
+- [x] `RestScene.tsx`: 대기 → 작업 → 졸림 → 잠듦 → 깜짝 놀람 (States 섹션)
+- [x] `HouseScene.tsx`: 터 다지기 → 뼈대 → 벽 → 지붕 → 완성 → 마을 (HowItWorks 02)
+- [x] 데스크톱 1280px 브라우저로 확인 (라이트·다크, 재생/일시정지/카드 이동 모두 동작 확인). 모바일 390px은 이 환경의 브라우저 자동화 창 크기 조절이 반영되지 않아 라이브 비교는 못 함 — 미디어쿼리는 시안 그대로 포팅
 
 ## 4. 신청 저장
 - [ ] Supabase 프로젝트 생성, `supabase init`, `supabase link`

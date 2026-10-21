@@ -1,0 +1,141 @@
+.rest {
+  position: absolute;
+  inset: 0;
+}
+
+.win {
+  position: absolute;
+  left: 5%;
+  top: 9%;
+  width: 50%;
+}
+
+.otter {
+  position: absolute;
+  left: 62%;
+  width: 26%;
+  bottom: 24%;
+  height: 46%;
+  display: grid;
+  place-items: end center;
+}
+
+.otter img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.timer {
+  position: absolute;
+  left: 61%;
+  top: 9%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 6px 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+  display: grid;
+  gap: 2px;
+}
+
+.timer small {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.clock {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--leaf);
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: 1px;
+}
+
+.dotPause {
+  background: var(--ink-soft);
+}
+
+.input {
+  position: absolute;
+  right: 4%;
+  top: 9%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.key {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 18px;
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.inputTyping .key {
+  animation: key 0.35s steps(2) infinite;
+}
+
+@keyframes key {
+  0%,
+  49% {
+    transform: none;
+  }
+  50%,
+  100% {
+    transform: translateY(2px);
+  }
+}
+
+.cursor {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  z-index: 4;
+  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.25));
+}
+
+@media (max-width: 520px) {
+  .win {
+    left: 5%;
+    top: 13%;
+    width: 72%;
+  }
+
+  .input {
+    top: 3.5%;
+    right: 4%;
+  }
+
+  .timer {
+    left: 5%;
+    top: 47%;
+    padding: 4px 10px;
+  }
+
+  .otter {
+    left: 44%;
+    width: 52%;
+    bottom: 27%;
+    height: 30%;
+  }
+}
