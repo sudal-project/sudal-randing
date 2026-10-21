@@ -106,8 +106,8 @@ export default function RestScene() {
               >
                 <path
                   d="M4 2l15 9-6.5 1.5L16 20l-3 1.5-3.4-7.6L4 18z"
-                  fill="#fff"
-                  stroke="#2b1d16"
+                  fill="var(--paper)"
+                  stroke="var(--ink)"
                   strokeWidth="1.6"
                   strokeLinejoin="round"
                 />
