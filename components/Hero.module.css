@@ -19,6 +19,34 @@
   max-width: 30em;
 }
 
+.download {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--paper);
+  font: 700 15px/1 var(--font-body);
+  padding: 14px 22px;
+  margin-top: 22px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, #000);
+  transition: filter 0.08s, transform 0.08s, box-shadow 0.08s;
+}
+
+.download:hover {
+  filter: brightness(1.05);
+}
+
+.download:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 60%, #000);
+}
+
 .ticks {
   list-style: none;
   padding: 0;

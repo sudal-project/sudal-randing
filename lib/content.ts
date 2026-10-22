@@ -5,6 +5,7 @@ export const brand = {
 
 export const header = {
   ctaLabel: "출시 알림 받기",
+  ctaLabelReleased: "다운로드",
   ctaHref: "#join",
 };
 
@@ -16,6 +17,7 @@ export const demoWindow = {
 
 export const hero = {
   eyebrow: "Windows · macOS 데스크톱 공부 타이머 · 출시 준비 중",
+  eyebrowReleased: "Windows · macOS 데스크톱 공부 타이머",
   heading: [
     { text: "공부 시간은 집으로,", mark: false },
     { text: "완성한 집은", mark: true },
@@ -23,6 +25,7 @@ export const hero = {
   ],
   lede: "공부를 시작하면 바탕화면 한쪽에서 수달이 같이 일해요. 내가 공부한 시간만큼 수달이 집을 짓고, 집이 모이면 마을이 돼요.",
   ticks: ["출시하는 날, 이 메일로 가장 먼저 알려드려요", "알림 말고 다른 메일은 보내지 않아요"],
+  ticksReleased: ["지금 바로 내려받아 시작할 수 있어요", "Windows · macOS 모두 지원해요"],
 };
 
 export const deskDemoHints = {
@@ -285,6 +288,7 @@ export const roadmapStages = [
 export const footer = {
   copyright: "© 2026 수달공방 (Otter Workshop)",
   tagline: "Windows · macOS 데스크톱 앱 · 출시 준비 중",
+  taglineReleased: "Windows · macOS 데스크톱 앱",
 };
 
 export const waitlistForm = {
@@ -324,6 +328,13 @@ export const joinSection = {
   pill: "출시 준비 중",
   heading: "출시되면\n가장 먼저 알려드릴게요",
   lead: "수달공방은 아직 출시 전인 Windows · macOS 데스크톱 앱이에요. 지금 신청하면 출시하는 날 메일로 알려드려요. 앱을 내려받거나 결제하는 절차는 없어요.",
+};
+
+export const downloadSection = {
+  pill: "출시했어요",
+  heading: "수달공방을\n지금 만나보세요",
+  lead: "Windows · macOS에서 내려받아 바로 시작할 수 있어요.",
+  ctaLabel: "다운로드",
 };
 
 export const unsubscribedPage = {

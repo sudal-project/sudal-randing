@@ -52,6 +52,42 @@
   width: auto;
 }
 
+.downloadCard {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+.downloadBtn {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--paper);
+  font: 700 15px/1 var(--font-body);
+  padding: 14px 20px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, #000);
+  transition: filter 0.08s, transform 0.08s, box-shadow 0.08s;
+}
+
+.downloadBtn:hover {
+  filter: brightness(1.05);
+}
+
+.downloadBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 60%, #000);
+}
+
 @media (max-width: 900px) {
   .wrap {
     grid-template-columns: minmax(0, 1fr);
