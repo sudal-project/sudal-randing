@@ -33,13 +33,13 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] 직접 신청해 보고 Table Editor에서 확인. 같은 이메일 두 번 → "이미 신청" 확인
 
 ## 5. 출시 메일 (Supabase Edge Functions, Vercel 배포와 무관하게 먼저 준비 가능)
-- [ ] Resend 가입, 도메인 인증(SPF·DKIM)
-- [ ] `supabase/functions/send-launch-mail` (dry_run / test / send)
-- [ ] `supabase/functions/unsubscribe` + `app/unsubscribed/page.tsx`
+- [x] Resend 가입, 도메인 인증(SPF·DKIM) — chungs.store, 리전 ap-northeast-1
+- [x] `supabase/functions/send-launch-mail` (dry_run / test / send) — 로컬 Docker로 401/405/400/dry_run/test/send 분기 검증 완료
+- [x] `supabase/functions/unsubscribe` + `app/unsubscribed/page.tsx` — 로컬에서 토큰 삭제·리다이렉트·페이지 렌더링 확인 완료
 - [ ] secrets 설정: RESEND_API_KEY, ADMIN_SECRET, MAIL_FROM, SITE_URL (배포 전엔 임시값, 배포 후 실제 도메인으로 교체)
-- [ ] 메일 템플릿 문구 (`supabase/functions/send-launch-mail/template.ts`)
-- [ ] `scripts/send-launch-mail.sh`: 모드를 골라 함수를 호출하는 스크립트
-- [ ] 리허설: 내 메일 몇 개로 신청 → dry_run → test → send → 수신 거부까지
+- [x] 메일 템플릿 문구 (`supabase/functions/send-launch-mail/template.ts`)
+- [x] `scripts/send-launch-mail.sh`: 모드를 골라 함수를 호출하는 스크립트 — 로컬에서 전 분기 테스트 완료
+- [ ] 리허설: 내 메일 몇 개로 신청 → dry_run → test → send → 수신 거부까지 (실제 Resend 키 받은 뒤 한 번에 진행하기로 함)
 
 ## 6. 배포 (개발 마지막 단계)
 - [ ] Vercel 연결, 환경 변수 `SUPABASE_URL`, `SUPABASE_ANON_KEY`

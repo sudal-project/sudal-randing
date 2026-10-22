@@ -11,8 +11,8 @@
    → sent_at is null 인 사람 조회 → Resend로 발송 → sent_at 기록
 
 [수신자] 메일 속 "수신 거부" 클릭
-   → supabase/functions/unsubscribe?token=...
-   → 해당 행 삭제 → 사이트 /unsubscribed 로 이동
+   → 사이트 /api/unsubscribe?token=... (발신 도메인 SITE_URL과 링크 도메인을 맞춰 스팸 필터 회피)
+   → supabase/functions/unsubscribe 호출 → 해당 행 삭제 → 사이트 /unsubscribed 로 이동
 ```
 
 ## 테이블 `waitlist`
@@ -58,8 +58,10 @@
 
 ## 수신 거부 함수 `unsubscribe`
 - `GET ?token=<uuid>` → 해당 행 삭제 → `SITE_URL/unsubscribed`로 302
-- 토큰이 없거나 틀려도 같은 페이지로 보낸다 (가입 여부를 드러내지 않음).
+- `POST ?token=<uuid>` → 해당 행 삭제 → 빈 응답 200 (메일 클라이언트의 원클릭 수신 거부, List-Unsubscribe-Post용)
+- 토큰이 없거나 틀려도 같은 결과를 보낸다 (가입 여부를 드러내지 않음).
 - 이 함수는 JWT 검증 없이 공개로 배포한다.
+- 메일 속 링크는 이 함수를 직접 가리키지 않고 `app/api/unsubscribe`(Next.js)를 거친다. 발신 도메인(SITE_URL)과 메일 속 링크 도메인이 다르면 스팸 필터가 의심하기 때문.
 
 ## 출시 메일 내용
 - 제목 예: "수달공방이 출시됐어요"
