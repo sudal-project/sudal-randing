@@ -36,14 +36,14 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] Resend 가입, 도메인 인증(SPF·DKIM) — chungs.store, 리전 ap-northeast-1
 - [x] `supabase/functions/send-launch-mail` (dry_run / test / send) — 로컬 Docker로 401/405/400/dry_run/test/send 분기 검증 완료
 - [x] `supabase/functions/unsubscribe` + `app/unsubscribed/page.tsx` — 로컬에서 토큰 삭제·리다이렉트·페이지 렌더링 확인 완료
-- [ ] secrets 설정: RESEND_API_KEY, ADMIN_SECRET, MAIL_FROM, SITE_URL (배포 전엔 임시값, 배포 후 실제 도메인으로 교체)
+- [x] secrets 설정: RESEND_API_KEY, ADMIN_SECRET, MAIL_FROM, SITE_URL — SITE_URL은 바로 실제 도메인(`https://chungs.store`)으로 설정함
 - [x] 메일 템플릿 문구 (`supabase/functions/send-launch-mail/template.ts`)
 - [x] `scripts/send-launch-mail.sh`: 모드를 골라 함수를 호출하는 스크립트 — 로컬에서 전 분기 테스트 완료
-- [ ] 리허설: 내 메일 몇 개로 신청 → dry_run → test → send → 수신 거부까지 (실제 Resend 키 받은 뒤 한 번에 진행하기로 함)
+- [x] 리허설: 신청 → dry_run → test → send → 수신 거부까지 실제 Resend로 확인함. test 메일이 skuniv 메일함에서 처음엔 스팸함으로 갔다가, 링크 도메인 일치·List-Unsubscribe 헤더 추가 후 정상 수신함으로 옴. Gmail은 Promotions 탭으로 분류(정상 범주, 추가 조치 안 함). 수신 거부 클릭 시 행 삭제·리다이렉트까지 로컬에서 확인, 사이트 미배포라 최종 페이지 렌더만 못 봄
 
 ## 6. 배포 (개발 마지막 단계)
 - [ ] Vercel 연결, 환경 변수 `SUPABASE_URL`, `SUPABASE_ANON_KEY`
-- [ ] 도메인 연결, SITE_URL secret을 실제 도메인으로 교체
+- [ ] 도메인 연결 (SITE_URL secret은 이미 `https://chungs.store`로 설정해 둠)
 - [ ] `app/opengraph-image.png`, `app/icon.png`
 - [ ] 모바일 실기기에서 화면·폼 확인
 - [ ] `app/privacy/page.tsx` 개인정보 안내 전문
@@ -51,3 +51,4 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 ## 나중에
 - [ ] 방문·신청 수 분석 (Vercel Analytics 등)
 - [ ] 관리자 페이지 `/admin` (필요해지면)
+- [ ] **실제 앱 출시일**: 랜딩 페이지의 "출시 알림 받기" 버튼을 다운로드 버튼으로 교체 (출시 메일 속 사이트 링크가 그제서야 의미 있어짐 — `docs/MAILING.md` "출시 날 순서" 참고)
