@@ -325,3 +325,11 @@ export const joinSection = {
   heading: "출시되면\n가장 먼저 알려드릴게요",
   lead: "수달공방은 아직 출시 전인 Windows · macOS 데스크톱 앱이에요. 지금 신청하면 출시하는 날 메일로 알려드려요. 앱을 내려받거나 결제하는 절차는 없어요.",
 };
+
+export const unsubscribedPage = {
+  title: "수신 거부 완료",
+  heading: "수신 거부가 완료됐어요",
+  lead: "수달공방 출시 알림 메일을 더 이상 보내지 않을게요.",
+  backHref: "/",
+  backLabel: "다시 홈으로",
+};

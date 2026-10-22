@@ -1,0 +1,34 @@
+.wrap {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  gap: 14px;
+}
+
+.lead {
+  color: var(--ink-soft);
+}
+
+.back {
+  justify-self: center;
+  margin-top: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
