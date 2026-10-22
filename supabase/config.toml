@@ -386,6 +386,10 @@ deno_version = 2
 # [edge_runtime.secrets]
 # secret_key = "env(SECRET_VALUE)"
 
+# 관리자가 x-admin-secret 헤더로 직접 호출하는 함수. Supabase JWT 검증은 쓰지 않는다.
+[functions.send-launch-mail]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327
