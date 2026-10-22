@@ -45,7 +45,7 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [x] `/admin`: Basic Auth(`ADMIN_SECRET`)로 보호, 대상 수 확인 · 신청자 목록 · 테스트 발송 · 실제 발송(SEND 확인 입력)까지 터미널 없이 처리
 - [x] `RELEASE_STAGE`/`DOWNLOAD_URL` 환경 변수로 Header/Hero/Join을 신청 폼 ↔ 다운로드 안내로 전환하는 로직 추가
 - [x] 로컬에서 Basic Auth 401·로그인·대상 수 표시 확인, SEND 미입력 시 실제 발송 거부 확인
-- [ ] `supabase functions deploy list-waitlist` 배포 (새 secrets 설정은 필요 없음 — 기존 ADMIN_SECRET/SUPABASE_SERVICE_ROLE_KEY 재사용)
+- [x] `supabase functions deploy list-waitlist` 배포 (새 secrets 설정 없이 기존 ADMIN_SECRET/SUPABASE_SERVICE_ROLE_KEY 재사용 확인)
 - [ ] 테스트 발송 1건 실제 확인 (Resend로 실제 메일이 나가므로 실행 전 확인 필요)
 - [x] 로컬에서 `RELEASE_STAGE=released`로 바꿔 다운로드 모드 렌더링 확인 (Header/Hero/Join/Footer, 다크 모드는 토큰만 썼으므로 기존 라이트·다크 체계를 그대로 따름)
 
