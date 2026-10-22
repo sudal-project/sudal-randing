@@ -1,0 +1,153 @@
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 20px;
+  display: grid;
+  gap: 24px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: grid;
+  gap: 10px;
+}
+
+.card h2 {
+  font-size: 18px;
+}
+
+.desc {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.count {
+  font-size: 28px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.form input {
+  flex: 1 1 220px;
+  min-width: 0;
+  font: 16px var(--font-body);
+  color: var(--ink);
+  background: var(--sand);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form button {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--paper);
+  font: 700 14px/1 var(--font-body);
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  filter: brightness(1.05);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab,
+.tabActive {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.tabActive {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.table th {
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pager a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pager a:hover {
+  text-decoration: underline;
+}
+
+.pagerDisabled {
+  color: var(--ink-soft);
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+.ok {
+  color: var(--leaf);
+  font-weight: 500;
+}
+
+.err {
+  color: #c4472f;
+  font-weight: 500;
+}
