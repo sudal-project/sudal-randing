@@ -1,7 +1,10 @@
 import { brand, header } from "@/lib/content";
+import { isReleased } from "@/lib/release";
 import styles from "./Header.module.css";
 
 export default function Header() {
+  const released = isReleased();
+
   return (
     <header className={styles.top} id="top">
       <div className={`wrap ${styles.inner}`}>
@@ -11,7 +14,7 @@ export default function Header() {
           <small>{brand.nameEn}</small>
         </a>
         <a className={styles.cta} href={header.ctaHref}>
-          {header.ctaLabel}
+          {released ? header.ctaLabelReleased : header.ctaLabel}
         </a>
       </div>
     </header>

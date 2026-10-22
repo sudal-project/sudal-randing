@@ -1,14 +1,18 @@
 import DeskDemo from "@/components/desk/DeskDemo";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
-import { hero } from "@/lib/content";
+import { downloadSection, hero } from "@/lib/content";
+import { getDownloadUrl, isReleased } from "@/lib/release";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const released = isReleased();
+  const ticks = released ? hero.ticksReleased : hero.ticks;
+
   return (
     <section className={styles.hero} style={{ paddingBlock: 0 }}>
       <div className={`wrap ${styles.grid}`}>
         <div>
-          <p className="eyebrow">{hero.eyebrow}</p>
+          <p className="eyebrow">{released ? hero.eyebrowReleased : hero.eyebrow}</p>
           <h1 className={styles.heading}>
             {hero.heading.map((line, index) => (
               <span key={line.text}>
@@ -19,10 +23,16 @@ export default function Hero() {
           </h1>
           <p className={styles.lede}>{hero.lede}</p>
 
-          <WaitlistForm variant="hero" />
+          {released ? (
+            <a className={styles.download} href={getDownloadUrl()}>
+              {downloadSection.ctaLabel}
+            </a>
+          ) : (
+            <WaitlistForm variant="hero" />
+          )}
 
           <ul className={styles.ticks}>
-            {hero.ticks.map((tick) => (
+            {ticks.map((tick) => (
               <li key={tick}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12.5l4.5 4.5L19 7.5" />
