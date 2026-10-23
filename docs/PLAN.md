@@ -57,5 +57,6 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [ ] `app/privacy/page.tsx` 개인정보 안내 전문
 
 ## 나중에
+- [ ] 의견 남기기(접었다 펴는 5문항 설문) 넣을지 결정. 넣으면 의견 테이블 마이그레이션 + Server Action 추가 (시안: sudal-frontend `index.html`, `questions.js`)
 - [ ] 방문·신청 수 분석 (Vercel Analytics 등)
 - [ ] **실제 앱 출시일**: Vercel 환경 변수 `RELEASE_STAGE=released`, `DOWNLOAD_URL=<실제 다운로드 링크>`로 설정하고 재배포 (출시 메일 속 사이트 링크가 그제서야 다운로드로 이어짐 — `docs/MAILING.md` "출시 날 순서" 참고)

@@ -1,9 +1,28 @@
+.footer {
+  background: var(--wood-dark);
+  color: var(--footer-ink);
+  padding: 34px 0;
+  font-size: 14px;
+}
+
 .inner {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
-  padding-block: 28px;
-  font-size: 13px;
-  color: var(--ink-soft);
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--footer-brand);
+  font-family: var(--round);
+  font-size: 18px;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
 }

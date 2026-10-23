@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jua, IBM_Plex_Sans_KR, Silkscreen } from "next/font/google";
+import { Jua, IBM_Plex_Sans_KR } from "next/font/google";
 import "./globals.css";
 
 const jua = Jua({
@@ -14,12 +14,6 @@ const ibmPlexSansKr = IBM_Plex_Sans_KR({
   variable: "--font-ibm-plex-sans-kr",
 });
 
-const silkscreen = Silkscreen({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-silkscreen",
-});
-
 export const metadata: Metadata = {
   title: "수달공방 - 출시 알림 신청",
   description:
@@ -28,7 +22,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className={`${jua.variable} ${ibmPlexSansKr.variable} ${silkscreen.variable}`}>
+    <html lang="ko" className={`${jua.variable} ${ibmPlexSansKr.variable}`}>
+      <head>
+        {/* 랜딩 시안 글꼴: 제목 Jua(셀프 호스팅), 본문 Pretendard */}
+        <link rel="stylesheet" href="/assets/fonts/jua/jua.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
