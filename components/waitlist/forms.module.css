@@ -5,7 +5,7 @@
   padding: 13px 15px;
   border-radius: 10px;
   border: 2px solid var(--line);
-  background: var(--white);
+  background: var(--field);
   color: var(--ink);
 }
 
@@ -64,7 +64,7 @@
   width: 18px;
   height: 18px;
   flex: none;
-  accent-color: var(--wood-dark);
+  accent-color: var(--opt-on);
 }
 
 .more {
@@ -81,7 +81,7 @@
 .policy {
   font-size: 13px;
   color: var(--ink-soft);
-  background: var(--white);
+  background: var(--field);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 12px 14px;
@@ -135,7 +135,7 @@
   display: inline-block;
   padding: 10px 18px;
   border-radius: 10px;
-  background: var(--white);
+  background: var(--field);
   border: 2px solid var(--line);
   font-size: 15px;
   line-height: 1.4;
@@ -144,9 +144,9 @@
 }
 
 .opt input:checked + span {
-  background: var(--wood-dark);
-  border-color: var(--wood-dark);
-  color: var(--white);
+  background: var(--opt-on);
+  border-color: var(--opt-on);
+  color: var(--opt-on-ink);
 }
 
 .opt input:focus-visible + span {
@@ -170,7 +170,7 @@
 .check input {
   width: 18px;
   height: 18px;
-  accent-color: var(--wood-dark);
+  accent-color: var(--opt-on);
   margin: 0;
 }
 
@@ -236,7 +236,7 @@
   font-family: var(--round);
   font-weight: 400;
   font-size: 20px;
-  color: var(--wood-dark);
+  color: var(--heading);
   display: block;
 }
 

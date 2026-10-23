@@ -12,6 +12,7 @@ export const meta = {
   ogDescription: "바탕화면에서 같이 일하는 수달과 공부하는 데스크톱 앱. 출시 알림을 신청해 주세요.",
   ogImage: "/assets/og.jpg?v=10231120",
   themeColor: "#fbe9d6",
+  themeColorDark: "#1d1712",
 };
 
 export const header = {

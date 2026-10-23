@@ -65,7 +65,7 @@
   font-size: 12px;
   font-family: var(--body);
   font-weight: 700;
-  color: var(--white);
+  color: var(--on-accent);
   background: var(--brick);
   border-radius: 6px;
   padding: 2px 7px;
@@ -76,7 +76,7 @@
   font-weight: 400;
   font-size: 21px;
   margin: 2px 0 10px;
-  color: var(--wood-dark);
+  color: var(--heading);
 }
 
 .card ul {

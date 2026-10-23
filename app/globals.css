@@ -133,7 +133,7 @@ a {
 
 /* ───────── 랜딩 페이지 (sudal-frontend 시안) ─────────
    관리자·수신 거부 페이지는 위 토큰을 그대로 쓰고, 랜딩은 .landing 안에서만 아래 토큰으로 덮는다.
-   시안이 라이트 전용이라 다크 값도 같은 색을 쓴다. */
+   다크 값은 아래 prefers-color-scheme 블록에서 덮는다. */
 .landing,
 body:has(.landing) {
   --sky: #fbe9d6;
@@ -155,7 +155,13 @@ body:has(.landing) {
   --brick-shadow: #9a4b20;
   --brick-glow: #e7b48f;
   --line: #e5cfb1;
-  --white: #fff;
+  --heading: #4b2b17;
+  --on-accent: #fff;
+  --field: #fff;
+  --opt-on: #4b2b17;
+  --opt-on-ink: #fff;
+  --video-ink: #fff8ec;
+  --sign-ink: #fff8ec;
   --board-shine: rgba(255, 255, 255, 0.12);
   --error: #b23c17;
   --error-line: #d0613a;
@@ -195,7 +201,69 @@ body:has(.landing) {
   --dot-edge: rgba(0, 0, 0, 0.18);
   --round: "Jua", "Pretendard", sans-serif;
   --body: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  color-scheme: light;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  .landing,
+  body:has(.landing) {
+    --sky: #1d1712;
+    --paper: #28201a;
+    --paper-glass: rgba(40, 32, 26, 0.94);
+    --sand: #8a6a45;
+    --wood: #3a281b;
+    --wood-dark: #140e0a;
+    --ink: #f3e7d6;
+    --ink-soft: #bba792;
+    --river: #7cc3d2;
+    --river-deep: #9ccfe6;
+    --river-soft: #1f3540;
+    --leaf: #93bd76;
+    --roof-green: #7cc2ae;
+    --roof-red: #ec8a72;
+    --brick: #d9733a;
+    --brick-light: #ea9157;
+    --brick-shadow: #7a3a16;
+    --brick-glow: #6a3d22;
+    --line: #3d3128;
+    --heading: #f6e2c4;
+    --on-accent: #fff;
+    --field: #1f1813;
+    --opt-on: #f1c48d;
+    --opt-on-ink: #2a1a0f;
+    --video-ink: #fff8ec;
+    --sign-ink: #fff8ec;
+    --board-shine: rgba(255, 255, 255, 0.06);
+    --error: #f39a7c;
+    --error-line: #e07a5a;
+    --paper-edge: #3d3128;
+    --stripe-a: #2e241c;
+    --stripe-b: #3a2e24;
+    --chip: #3a2e24;
+    --timer-ink: #f3e7d6;
+    --timer-num: #ffd36b;
+    --stage-dim: #5c4b3d;
+    --road-a: #4a3a28;
+    --road-b: #3d3022;
+    --silhouette: #4d3f33;
+    --silhouette-soft: #574739;
+    --question: #8a6d55;
+    --polaroid: #30271f;
+    --polaroid-edge: #4d3f33;
+    --polaroid-shadow: #17110c;
+    --sparkle: #b8955e;
+    --sign: #8f5d36;
+    --footer-ink: #c9b39a;
+    --footer-brand: #f3e7d6;
+    --mac-edge: #4d3f33;
+    --mac-bar-top: #3a2e24;
+    --mac-bar-bottom: #30261e;
+    --mac-title: #bba792;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --shadow-deep: rgba(0, 0, 0, 0.6);
+    --shadow-faint: rgba(0, 0, 0, 0.2);
+    --plank: rgba(0, 0, 0, 0.12);
+  }
 }
 
 body:has(.landing) {

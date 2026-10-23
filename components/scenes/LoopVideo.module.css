@@ -10,7 +10,8 @@
   display: grid;
   place-items: center;
   background: var(--video-btn);
-  color: var(--paper);
+  color: var(--video-ink);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   opacity: 0.75;
   transition: opacity 0.15s, background 0.15s;

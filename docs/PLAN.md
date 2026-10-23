@@ -49,10 +49,19 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 - [ ] 테스트 발송 1건 실제 확인 (Resend로 실제 메일이 나가므로 실행 전 확인 필요)
 - [x] 로컬에서 `RELEASE_STAGE=released`로 바꿔 다운로드 모드 렌더링 확인 (Header/Hero/Join/Footer, 다크 모드는 토큰만 썼으므로 기존 라이트·다크 체계를 그대로 따름)
 
+## 6-1. 프론트엔드 교체 (새 시안 sudal-frontend)
+- [x] `index.html`을 섹션별 컴포넌트로 분리 (Header, Hero, Together, States, Stages, Village, Privacy, Roadmap, Launch, Footer)
+- [x] 집 짓기 장면·집 단계·영상 버튼을 React 상태로 (`components/scenes/`), 문구는 `lib/content.ts`
+- [x] 신청 폼을 기존 `joinWaitlist`에 연결 (백엔드 변경 없음), 이미지·영상·Jua 폰트를 `public/assets/`로
+- [x] 예전 컴포넌트·이미지·전역 스타일 정리, `docs/reference/prototype`을 새 시안으로 교체
+- [x] 다크 모드 토큰, Safari용 `-webkit-backdrop-filter`
+- [ ] `.env.local`에 Supabase 값 채우고 실제 신청 1건 저장 확인
+- [ ] 브라우저로 시안과 나란히 비교 (데스크톱, 390px 휴대폰, 다크 모드, macOS Safari)
+
 ## 7. 배포 (개발 마지막 단계)
 - [ ] Vercel 연결, 환경 변수 `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `ADMIN_SECRET`(Supabase secrets와 동일 값), `RELEASE_STAGE=waitlist`
 - [ ] 도메인 연결 (SITE_URL secret은 이미 `https://chungs.store`로 설정해 둠)
-- [ ] `app/opengraph-image.png`, `app/icon.png`
+- [x] OG 이미지·아이콘 (`public/assets/og.jpg`, `favicon.png`, `apple-touch-icon.png`, `app/page.tsx` metadata)
 - [ ] 모바일 실기기에서 화면·폼 확인
 - [ ] `app/privacy/page.tsx` 개인정보 안내 전문
 

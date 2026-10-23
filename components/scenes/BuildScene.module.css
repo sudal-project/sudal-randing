@@ -137,7 +137,7 @@
 
 .chipOn {
   background: var(--brick);
-  color: var(--white);
+  color: var(--on-accent);
 }
 
 .timer {
