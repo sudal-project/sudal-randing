@@ -28,7 +28,4 @@ jobs:
           SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
 
       - name: Deploy Edge Functions
-        run: |
-          supabase functions deploy send-launch-mail --project-ref "$SUPABASE_PROJECT_REF"
-          supabase functions deploy unsubscribe --project-ref "$SUPABASE_PROJECT_REF"
-          supabase functions deploy list-waitlist --project-ref "$SUPABASE_PROJECT_REF"
+        run: supabase functions deploy --project-ref "$SUPABASE_PROJECT_REF"
