@@ -5,7 +5,7 @@
 ## 처음 시작
 1. `CLAUDE.md`와 `docs/` 문서를 확인해요.
 2. Claude Code에서 "docs/PLAN.md 1번부터 진행해줘"라고 시키면 단계별로 만들어요.
-3. 디자인과 동작의 기준은 `docs/reference/prototype/index.html`이에요. 브라우저로 열어 보세요.
+3. 디자인과 동작의 기준은 `docs/reference/prototype/index.html`이에요. 그림은 `public/assets`에 있어서 실제 모습은 `npm run dev`로 확인해요.
 
 ## 명령
 - `npm run dev` : 개발 서버

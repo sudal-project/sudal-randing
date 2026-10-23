@@ -2,721 +2,782 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="assets/idle.webp" type="image/webp">
-<title>수달공방</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="공부를 시작하면 수달이 바탕화면에서 함께 집을 지어요. 공부한 시간은 집으로, 완성한 집은 나만의 마을로. Windows · macOS용으로 준비하고 있어요.">
-<meta property="og:title" content="수달공방 | 수달과 함께 공부하는 데스크톱 타이머">
-<meta property="og:description" content="공부 시간은 집으로, 완성한 집은 나만의 마을로. 출시되면 가장 먼저 알려드릴게요.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수달공방 — 공부 시간은 집으로, 완성한 집은 나만의 마을로</title>
+<meta name="description" content="공부를 시작하면 바탕화면 한쪽에서 수달이 같이 일해요. 공부한 시간만큼 수달이 집을 짓고, 집이 모이면 마을이 돼요. Windows·macOS 데스크톱 공부 타이머, 출시 준비 중.">
+<meta property="og:title" content="수달공방 — 공부 시간은 집으로, 완성한 집은 나만의 마을로">
+<meta property="og:description" content="바탕화면에서 같이 일하는 수달과 공부하는 데스크톱 앱. 출시 알림을 신청해 주세요.">
+<meta property="og:image" content="/assets/og.jpg?v=10231120">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="assets/hero.webp">
-<meta name="theme-color" content="#f6efe2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Jua&family=Silkscreen&display=swap">
-<style>
-/* Layout: one 1120px column; hero = copy + live desktop demo; autoplay scenes sit above their step-photo cards. */
-:root{
-  --sand:#f6efe2;        /* page ground — the village's sand path */
-  --paper:#fffaf1;       /* raised surfaces */
-  --ink:#3a2a1e;         /* bark-brown text */
-  --ink-soft:#7a6553;
-  --line:#e6d8c2;
-  --accent:#e07a35;      /* the app's orange buttons */
-  --accent-ink:#fff8f0;
-  --accent-soft:#f8d9bd;
-  --river:#5aaec0;
-  --leaf:#6f9a54;
-  --band:#4a3222;        /* deep wood band */
-  --band-ink:#f6ead8;
-  --band-soft:#c9b39a;
-  --desk-a:#cfe6e4; --desk-b:#f3e3c8;
-  --ground:#ecc98f; --sky:#dcefee;
-  --cap-bg:rgba(43,29,22,.84); --cap-ink:#fff8ef;
-  --font-display:"Jua","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
-  --font-pixel:"Silkscreen","IBM Plex Mono",ui-monospace,monospace;
-  --r:14px;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --sand:#1d1712;--paper:#28201a;--ink:#f3e7d6;--ink-soft:#b9a690;--line:#3b3028;
-  --accent:#f0914b;--accent-ink:#24170e;--accent-soft:#5a3a22;--river:#7cc3d2;--leaf:#93bd76;
-  --band:#120d09;--band-ink:#f3e7d6;--band-soft:#a8927a;--desk-a:#24343a;--desk-b:#3a2e22;
-  --ground:#5c4630;--sky:#22333a;--cap-bg:rgba(10,7,5,.86);--cap-ink:#f6ecdf;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --sand:#1d1712;--paper:#28201a;--ink:#f3e7d6;--ink-soft:#b9a690;--line:#3b3028;
-  --accent:#f0914b;--accent-ink:#24170e;--accent-soft:#5a3a22;--river:#7cc3d2;--leaf:#93bd76;
-  --band:#120d09;--band-ink:#f3e7d6;--band-soft:#a8927a;--desk-a:#24343a;--desk-b:#3a2e22;
-  --ground:#5c4630;--sky:#22333a;--cap-bg:rgba(10,7,5,.86);--cap-ink:#f6ecdf;color-scheme:dark}
+<meta name="theme-color" content="#fbe9d6">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
+
+<link rel="stylesheet" href="/assets/fonts/jua/jua.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --sky:#fbe9d6;
+  --paper:#fff8ec;
+  --sand:#f1c48d;
+  --wood:#8a5532;
+  --wood-dark:#4b2b17;
+  --ink:#3a2414;
+  --ink-soft:#6f5440;
+  --river:#4f8fb3;
+  --river-deep:#2f6a8c;
+  --leaf:#6d8a57;
+  --roof-green:#5f9e8c;
+  --roof-red:#c95b45;
+  --brick:#d0713a;
+  --line:#e5cfb1;
+  --round:"Jua","Pretendard",sans-serif;
+  --body:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
 *{box-sizing:border-box}
-[hidden]{display:none!important}
-body{background:var(--sand);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sand)}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.25;text-wrap:balance;margin:0}
-p{margin:0}
-a{color:inherit}
-.eyebrow{font-size:13px;letter-spacing:.04em;color:var(--ink-soft);font-weight:500}
-.mark{background:linear-gradient(transparent 62%,var(--accent-soft) 62%);padding:0 .08em}
-:focus-visible{outline:3px solid var(--river);outline-offset:2px;border-radius:6px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--sky);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+img{max-width:100%;display:block}
+a{color:var(--river-deep)}
+:focus-visible{outline:3px solid var(--river);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--sand) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
-.top.scrolled{border-bottom-color:var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand img{width:34px;height:34px;object-fit:contain}
-.brand b{font-family:var(--font-display);font-weight:400;font-size:21px}
-.brand small{color:var(--ink-soft);font-size:12px;letter-spacing:.06em}
-.btn{appearance:none;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);font:700 15px/1 var(--font-body);padding:14px 20px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 60%,#000);transition:transform .08s,box-shadow .08s}
-.btn:hover{filter:brightness(1.05)}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 color-mix(in srgb,var(--accent) 60%,#000)}
-.btn[disabled]{opacity:.6;cursor:progress}
-.btn.sm{padding:10px 14px;font-size:14px}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,248,236,.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--line);transition:box-shadow .2s}
+.top.scrolled{box-shadow:0 6px 16px -10px rgba(75,43,23,.35)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--round);font-size:22px}
+.brand img{width:36px;height:36px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--round);font-size:17px;text-decoration:none;cursor:pointer;border:0;border-radius:10px;padding:13px 22px;line-height:1.2;transition:transform .12s, box-shadow .12s}
+.btn-go{background:var(--brick);color:#fff;box-shadow:0 4px 0 #9a4b20}
+.btn-go:hover{transform:translateY(-1px);box-shadow:0 5px 0 #9a4b20}
+.btn-go:active{transform:translateY(3px);box-shadow:0 1px 0 #9a4b20}
+.btn-go:disabled{opacity:.7;cursor:wait}
+.btn-plain{background:var(--paper);color:var(--ink);box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+.btn-plain:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.top .btn{padding:9px 16px;font-size:15px}
 
 /* hero */
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding-block:56px 72px}
-.hero h1{font-size:clamp(34px,4.2vw,50px);margin-top:14px;text-wrap:initial}
-.hero .lede{margin-top:18px;font-size:18px;color:var(--ink-soft);max-width:30em}
-.ticks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:6px;font-size:15px}
-.ticks li{display:flex;gap:10px;align-items:center}
-.ticks svg{flex:none;color:var(--leaf)}
+.hero{padding:44px 0 0}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:end}
+.tag{display:inline-block;font-size:14px;font-weight:600;color:var(--river-deep);background:#e3eef4;border-radius:8px;padding:5px 11px;margin-bottom:18px}
+.hero h1{font-family:var(--round);font-weight:400;font-size:clamp(38px,6.2vw,68px);line-height:1.18;margin:0;letter-spacing:-.01em;color:var(--wood-dark)}
+.hero h1 .l2{color:var(--roof-red)}
+.hero h1 .l3{color:var(--roof-green)}
+.hero-copy p{margin:0 0 20px;color:var(--ink-soft);font-size:18px;max-width:30em}
 
-.signup{margin-top:22px;display:grid;gap:12px}
-.field label,.label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row input[type=email]{flex:1 1 220px;min-width:0}
-input[type=email]{width:100%;font:16px var(--font-body);color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:10px;padding:12px 14px;transition:border-color .15s}
-input[type=email]:focus{outline:none;border-color:var(--accent)}
-input[type=email][aria-invalid=true]{border-color:#c4472f}
-.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px}
-.consent input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--accent);flex:none}
-details.policy{font-size:13px;color:var(--ink-soft)}
-details.policy summary{cursor:pointer;display:inline;text-decoration:underline;text-underline-offset:3px}
-details.policy dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:10px 0 0;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
-details.policy dt{font-weight:700;color:var(--ink)}
-details.policy dd{margin:0}
-.msg{font-size:14px;min-height:1.4em;font-weight:500}
-.msg.ok{color:var(--leaf)} .msg.err{color:#c4472f}
+
+/* signup (shared) */
+.inline{display:flex;gap:8px}
+.inline input{flex:1;min-width:0}
+input[type=email],textarea{width:100%;font:inherit;font-size:16px;padding:13px 15px;border-radius:10px;border:2px solid var(--line);background:#fff;color:var(--ink)}
+input[type=email]:focus,textarea:focus{border-color:var(--river);outline:none}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-soft);margin-top:12px;line-height:1.5}
+.consent input{margin:2px 0 0;width:18px;height:18px;flex:none;accent-color:var(--wood-dark)}
+.consent .more{background:none;border:0;padding:0;font:inherit;color:var(--river-deep);text-decoration:underline;cursor:pointer;margin-left:4px}
+.policy{font-size:13px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;line-height:1.6}
+.policy dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.policy dt{font-weight:600;color:var(--ink)}
+.policy dd{margin:0}
+.policy p{margin:8px 0 0}
+.promise{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:4px;font-size:14px;color:var(--ink-soft)}
+.promise li{display:flex;gap:8px;align-items:center}
+.promise li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--leaf);flex:none}
+.form-msg{font-size:14px;color:#b23c17;min-height:1.4em;margin-top:8px}
+.done{display:flex;gap:14px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:14px 16px}
+.done img{width:64px;flex:none}
+.done b{font-family:var(--round);font-weight:400;font-size:20px;color:var(--wood-dark);display:block}
+.done span{font-size:14px;color:var(--ink-soft)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
-/* desktop demo (hero) */
-.desk{position:relative;aspect-ratio:16/11;max-width:100%;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--desk-a),var(--desk-b));border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(58,42,30,.45)}
-.win{position:absolute;left:6%;top:7%;width:70%;background:var(--paper);border-radius:10px;box-shadow:0 10px 30px -12px rgba(0,0,0,.35);overflow:hidden}
-.win-bar{display:flex;gap:6px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line);font-size:11px;color:var(--ink-soft)}
-.win-bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
-.win-bar span{margin-left:6px}
-.slide{aspect-ratio:16/9;background:#2d3b3f;color:#e8f1ef;padding:7% 8%;display:flex;flex-direction:column;gap:6%;font-size:clamp(10px,1.3vw,14px)}
-.slide b{font-family:var(--font-display);font-weight:400;font-size:1.5em}
-.stack{display:flex;gap:4%;align-items:flex-end;flex:1}
-.stack div{flex:1;background:#5aaec0;border-radius:3px;opacity:.85}
-.prog{height:4px;background:#ffffff22;border-radius:2px;overflow:hidden}
-.prog i{display:block;height:100%;width:38%;background:#e07a35}
-.taskbar{position:absolute;left:0;right:0;bottom:0;height:7%;background:color-mix(in srgb,var(--paper) 70%,transparent);backdrop-filter:blur(6px);border-top:1px solid var(--line)}
-.buddy{position:absolute;right:5%;bottom:7%;width:30%;display:flex;flex-direction:column;align-items:center}
-.buddy .stage{width:100%;aspect-ratio:4/3;display:grid;place-items:end center}
-.buddy .sprite{max-width:88%;max-height:100%;object-fit:contain}
-.bubble{background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:6px 10px;margin-bottom:6px;display:grid;gap:4px;min-width:150px;box-shadow:3px 3px 0 var(--ink)}
-.bubble .t{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:var(--ink-soft)}
-.clock{font-family:var(--font-pixel);font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:.02em}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--leaf);display:inline-block;margin-right:5px;vertical-align:1px}
-.dot.pause{background:var(--ink-soft)}
-.housechip{position:absolute;left:5%;bottom:11%;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 12px 8px 8px;display:flex;gap:10px;align-items:center;font-size:12px;box-shadow:0 6px 16px -10px rgba(0,0,0,.35)}
-.housechip .hi{width:46px;height:46px;display:grid;place-items:end center}
-.housechip .hi img{max-width:46px;max-height:46px}
-.housechip b{display:block;font-size:13px}
-.bar{width:104px;height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:4px}
-.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
-.hint{margin-top:14px;font-size:14px;color:var(--ink-soft);text-align:center}
-.hint b{color:var(--ink)}
+/* scene */
+.scene{position:relative;margin-top:44px;aspect-ratio:1800/763;background:url(/assets/village_bg.webp) center/cover no-repeat;border-radius:18px 18px 0 0;overflow:hidden}
+.plot{position:absolute;transform:translate(-50%,-100%);width:11%}
+.plot img{width:100%}
+.plot .stage{position:absolute;left:0;right:0;bottom:0;opacity:0;transition:opacity .25s}
+.plot .stage.on{opacity:1}
+.worker{position:absolute;height:15.5%;transform:translate(-50%,-100%);display:flex;align-items:flex-end;justify-content:center}
+.worker img{height:100%;width:auto;max-width:none}
+.worker img.rest{height:92%}
+.worker .bob{animation:hammer .7s steps(2) infinite}
+@keyframes hammer{50%{transform:translateY(-6%) rotate(-3deg)}}
+.pop{animation:pop .45s ease-out}
+@keyframes pop{0%{transform:scale(.85)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.worker .bob,.pop{animation:none}}
 
-/* sprite motion (project otters) */
-.sprite{display:block;transform-origin:50% 100%}
-.sprite.work{animation:tap .5s linear infinite}
-.sprite.sleepy{animation:sway 1.8s ease-in-out infinite alternate}
-.sprite.sleep,.sprite.idle{animation:breathe 2.4s ease-in-out infinite}
-.sprite.surprise{animation:jump .5s ease-out}
-@keyframes tap{0%,49%{transform:none}50%,100%{transform:rotate(-3deg) translateY(-3%)}}
-@keyframes sway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
-@keyframes breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.02,.965)}}
-@keyframes jump{0%{transform:translateY(0)}30%{transform:translateY(-14%) scale(1.04)}100%{transform:translateY(0)}}
-@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+.board{background:var(--wood);padding:14px;border-radius:0 0 18px 18px;box-shadow:inset 0 3px 0 rgba(255,255,255,.12)}
+.board-inner{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.card-paper{background:var(--paper);border-radius:12px;padding:16px 18px;border:2px solid #f3dfc2}
+.build-head{display:flex;justify-content:space-between;font-family:var(--round);font-size:18px}
+.bar{height:16px;border-radius:8px;border:2px solid var(--wood);background:repeating-linear-gradient(45deg,#f6e7d0 0 6px,#efdcc0 6px 12px);overflow:hidden;margin:10px 0 12px}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,#e0874d 0 6px,#d0713a 6px 12px);transition:width .6s ease}
+.chips{display:flex;justify-content:space-between;gap:4px}
+.chip{font-family:var(--round);font-size:14px;padding:3px 9px;border-radius:6px;background:#f2e3cc;color:var(--ink-soft);transition:background .2s,color .2s}
+.chip.on{background:var(--brick);color:#fff}
+.timer{background:var(--wood-dark);border-radius:12px;padding:14px 18px;color:#f9e6c8;display:flex;flex-direction:column;justify-content:center}
+.timer small{font-family:var(--round);font-size:15px;opacity:.85}
+.timer b{font-size:clamp(28px,4vw,40px);color:#ffd36b;letter-spacing:.04em;font-weight:700;font-variant-numeric:tabular-nums}
 
 /* sections */
-section{padding-block:88px}
-.sec-head{display:grid;gap:12px;max-width:640px;margin-bottom:36px}
-.sec-head h2{font-size:clamp(28px,3.6vw,40px)}
-.sec-head p{color:var(--ink-soft);font-size:17px}
+section.block{padding:110px 0}
+.paper-bg{background:var(--paper)}
+.h2{font-family:var(--round);font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.3;margin:0 0 16px;color:var(--wood-dark)}
+.lead{font-size:18px;color:var(--ink-soft);max-width:36em;margin:0}
+.split{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center}
+.facts{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.facts li{display:flex;gap:12px;align-items:flex-start}
+.facts li::before{content:"";flex:none;width:10px;height:10px;margin-top:9px;border-radius:2px;background:var(--leaf)}
 
-/* autoplay scene + step cards */
-.player{display:grid;gap:14px}
-.screen{position:relative;aspect-ratio:2/1;max-width:100%;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,var(--desk-a),var(--desk-b))}
-.cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:5;display:flex;align-items:center;gap:12px;background:var(--cap-bg);color:var(--cap-ink);border-radius:12px;padding:10px 12px 10px 16px;font-size:15px;line-height:1.5}
-.cap .n{font-family:var(--font-pixel);font-size:12px;opacity:.75;flex:none;font-variant-numeric:tabular-nums}
-.cap .txt{flex:1;min-width:0}
-.pp{appearance:none;border:0;flex:none;width:34px;height:34px;border-radius:50%;background:color-mix(in srgb,var(--cap-ink) 18%,transparent);color:var(--cap-ink);display:grid;place-items:center;cursor:pointer}
-.pp svg{width:14px;height:14px}
-.cards{display:grid;gap:10px;list-style:none;margin:0;padding:0}
-.cards.five{grid-template-columns:repeat(5,minmax(0,1fr))}
-.cards.six{grid-template-columns:repeat(6,minmax(0,1fr))}
-.card-btn{appearance:none;font:inherit;color:inherit;text-align:left;width:100%;height:100%;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 14px 16px;display:grid;grid-template-rows:96px auto auto auto;gap:6px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
-.card-btn:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
-.card-btn[aria-current="step"]{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 24px -16px rgba(58,42,30,.5)}
-.card-btn .pic{display:grid;place-items:end center;height:96px}
-.card-btn .pic img{max-height:92px;max-width:100%;object-fit:contain}
-.card-btn .pic.thumb{border-radius:8px;overflow:hidden}
-.card-btn .pic.thumb img{max-height:none;width:100%;height:96px;object-fit:cover;object-position:35% 45%}
-.cards .card-btn h3{font-size:19px;margin-top:6px}
-.cards .card-btn p{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin:0}
-.card-btn .fill{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--accent)}
-.chip{justify-self:start;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--sand);border:1px solid var(--line);color:var(--ink-soft);font-variant-numeric:tabular-nums}
-.chip.on{background:color-mix(in srgb,var(--leaf) 18%,transparent);border-color:color-mix(in srgb,var(--leaf) 40%,transparent);color:var(--leaf)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:48px;position:relative}
+.flow::before{content:"";position:absolute;left:12%;right:12%;top:78px;border-top:3px dashed var(--line)}
+.state{text-align:center;padding:0 10px;position:relative}
+.state .pic{height:156px;display:flex;align-items:center;justify-content:center}
+.state .pic img{max-height:116px;width:auto;background:var(--paper);padding:0 8px}
+.state h3{font-family:var(--round);font-weight:400;font-size:22px;margin:10px 0 2px}
+.state .when{display:inline-block;font-size:13px;font-weight:600;color:var(--river-deep);background:#e3eef4;border-radius:6px;padding:3px 8px;margin-bottom:8px}
+.state p{margin:0;color:var(--ink-soft);font-size:15px;line-height:1.6}
 
-/* rest scene */
-.rest .win{left:5%;top:9%;width:50%}
-.rest .otter{position:absolute;left:62%;width:26%;bottom:24%;height:46%;display:grid;place-items:end center}
-.rest .otter img{max-height:100%;max-width:100%;object-fit:contain}
-.rest .timer{position:absolute;left:61%;top:9%;background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:6px 12px;box-shadow:3px 3px 0 var(--ink);display:grid;gap:2px}
-.rest .timer small{font-size:11px;color:var(--ink-soft)}
-.rest .input{position:absolute;right:4%;top:9%;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;display:flex;gap:6px;align-items:center;font-variant-numeric:tabular-nums}
-.rest .input .k{display:inline-grid;place-items:center;width:20px;height:18px;border:1.5px solid var(--ink-soft);border-radius:4px;font-size:10px}
-.rest .input.typing .k{animation:key .35s steps(2) infinite}
-@keyframes key{0%,49%{transform:none}50%,100%{transform:translateY(2px)}}
-.cursor{position:absolute;width:22px;height:22px;z-index:4;left:30%;top:60%;filter:drop-shadow(1px 2px 0 rgba(0,0,0,.25))}
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px;align-items:end}
+.stg{text-align:center}
+.stg .pic{height:180px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px}
+.stg img{max-height:166px;width:auto;transition:opacity .45s ease,filter .45s ease,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.stg .track{height:6px;margin:0 -8px;background:#efdcc0;overflow:hidden}
+.stg:first-child .track{margin-left:0;border-radius:3px 0 0 3px}
+.stg:last-child .track{margin-right:0;border-radius:0 3px 3px 0}
+.stg .track i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,#e0874d 0 6px,#d0713a 6px 12px)}
+.stages{position:relative}
+.stage-runner{position:absolute;left:0;top:0;height:56px;width:auto;z-index:2;pointer-events:none;will-change:transform;opacity:0;transition:opacity .25s}
+.stages.anim .stage-runner{opacity:1}
+@media (max-width:860px){.stage-runner{height:36px}}
+.stg span{transition:color .3s}
+.stages.anim .stg img{opacity:.22;filter:grayscale(1) brightness(1.1);transform:translateY(8px) scale(.94)}
+.stages.anim .stg span{color:#d9bfa1}
+.stages.anim .stg.on img{opacity:1;filter:none;transform:none}
+.stages.anim .stg.on span{color:var(--brick)}
+.stages:not(.anim) .stg .track i{width:100%}
+.stg b{display:block;font-family:var(--round);font-weight:400;font-size:19px;margin-top:12px}
+.stg span{font-size:14px;font-weight:600;color:var(--brick)}
+.note{margin-top:28px;font-size:15px;color:var(--ink-soft)}
 
-/* house scene */
-.build{position:absolute;inset:0;background:linear-gradient(var(--sky) 0 58%,var(--ground) 58% 100%)}
-.build .lot{position:absolute;left:50%;transform:translateX(-50%);bottom:17%;width:34%;height:64%;display:grid;place-items:end center}
-.build .lot img{max-width:100%;max-height:100%;object-fit:contain}
-.build .lot img.pop{animation:pop .45s ease-out}
-.build .worker{position:absolute;left:18%;bottom:17%;width:14%;height:30%;display:grid;place-items:end center}
-.build .worker img{max-width:100%;max-height:100%}
-.build .hud{position:absolute;left:4%;right:4%;top:6%;display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:13px}
-.build .hud b{white-space:nowrap}
-.build .hud .track{flex:1;height:12px;border-radius:6px;background:var(--line);overflow:hidden}
-.build .hud .track i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--accent) 0 14px,color-mix(in srgb,var(--accent) 82%,#fff) 14px 28px)}
-.build .hud .clock{font-size:14px}
-.sparkle{position:absolute;left:50%;bottom:62%;transform:translateX(-50%);font-family:var(--font-display);font-size:clamp(16px,2.2vw,24px);background:var(--paper);border:2px solid var(--ink);padding:4px 14px;border-radius:999px;box-shadow:3px 3px 0 var(--ink);white-space:nowrap;animation:pop .45s ease-out}
-.village{position:absolute;inset:0;display:grid;place-items:center;background:var(--ground)}
-.vframe{position:relative;width:100%;aspect-ratio:900/470;overflow:hidden}
-.vframe>img{position:absolute;width:111.12%;max-width:none;left:-10.56%;top:-8.51%}
-.village .plot{position:absolute;width:14.4%;transform:translateX(-50%)}
-.village .plot img{display:block;width:100%;animation:pop .45s ease-out}
-.village .badge{position:absolute;left:1%;top:2%;min-width:15%;padding-block:.6%!important;text-align:center;background:var(--paper);border:2px solid var(--ink);border-radius:8px;padding:2px 10px;font-weight:700;font-size:clamp(11px,1.4vw,15px);font-variant-numeric:tabular-nums}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;align-items:start}
+.shot.wide{grid-column:1/-1}
+.mac{border-radius:12px;overflow:hidden;background:#fff8ec;border:1px solid #d9c3a3;box-shadow:0 22px 44px -22px rgba(75,43,23,.5),0 2px 0 rgba(75,43,23,.06)}
+.mac-bar{position:relative;display:flex;align-items:center;gap:7px;height:30px;padding:0 12px;background:linear-gradient(#f3e7d4,#ead9c0);border-bottom:1px solid #d9c3a3}
+.mac-bar i{width:11px;height:11px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}
+.mac-bar .r{background:#ff5f57}.mac-bar .y{background:#febc2e}.mac-bar .g{background:#28c840}
+.mac-bar span{position:absolute;left:0;right:0;text-align:center;font-size:12px;color:#8a6d55;pointer-events:none}
+.mac-body{position:relative;background:#121114}
+.mac-body video,.mac-body img{display:block;width:100%;border:0;border-radius:0}
+.vbtn{position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:rgba(43,26,14,.62);color:#fff8ec;backdrop-filter:blur(4px);opacity:.75;transition:opacity .15s,background .15s}
+.vbtn:hover,.vbtn:focus-visible{opacity:1;background:rgba(43,26,14,.85)}
+.vbtn .ic-play{display:none}
+.vbtn.paused .ic-play{display:block}.vbtn.paused .ic-pause{display:none}
+.shot{margin:0}
+.shot figcaption{margin-top:12px}
+.shot figcaption{font-size:15px;color:var(--ink-soft);margin-top:10px}
 
-.how{border-top:1px solid var(--line)}
-.step{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center;padding-block:44px;border-bottom:1px solid var(--line)}
-.step.wide{grid-template-columns:minmax(0,1fr);gap:28px}
-.step.wide .intro{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:end}
-.step:last-child{border-bottom:0}
-.step .num{font-family:var(--font-pixel);color:var(--accent);font-size:15px}
-.step h3{font-size:clamp(24px,2.8vw,32px);margin-top:8px}
-.step p{color:var(--ink-soft);max-width:32em}
-.step .txt p{margin-top:12px}
-.step .facts{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px;min-width:0}
-.panel.flush{padding:0;overflow:hidden}
-.panel.flush img{display:block;width:100%;height:auto}
-.appear .mini{border-radius:10px;background:linear-gradient(160deg,var(--desk-a),var(--desk-b));aspect-ratio:16/9;position:relative;overflow:hidden;border:1px solid var(--line)}
-.appear .mini .w{position:absolute;left:7%;top:10%;width:62%;height:62%;background:var(--paper);border-radius:6px;box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
-.appear .mini img{position:absolute;right:6%;bottom:6%;width:24%}
-.btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
-.fake{font-size:13px;font-weight:700;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--sand)}
-.fake.go{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+/* privacy */
+.privacy{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:22px;padding:40px clamp(22px,4vw,48px)}
+.privacy img{width:160px}
+.privacy ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:14px}
+.privacy li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.privacy li svg{margin-top:3px}
+.privacy li b{display:block}
+.privacy li span{color:var(--ink-soft);font-size:16px}
 
-.note{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px}
-.note img{width:72px}
-.note h3{font-size:22px}
-.note ul{margin:10px 0 0;padding-left:1.1em;color:var(--ink-soft);display:grid;gap:4px}
+/* roadmap */
+.road{position:relative;margin-top:52px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.road::before{content:"";position:absolute;left:4%;right:4%;top:118px;height:14px;border-radius:7px;background:repeating-linear-gradient(90deg,#e8c99a 0 18px,#efd6ae 18px 36px)}
+.ver{position:relative;display:flex;flex-direction:column}
+.ver .pic{height:126px;display:flex;align-items:flex-end;justify-content:center;position:relative;z-index:1}
+.ver .pic img{max-height:118px;width:auto}
+.ver .card{margin-top:22px;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:16px 16px 18px;flex:1}
+.ver.now .card{border-color:var(--brick);box-shadow:0 4px 0 #e7b48f}
+.ver .v{display:flex;align-items:center;gap:8px;font-family:var(--round);font-size:15px;color:var(--ink-soft)}
+.ver .v em{font-style:normal;font-size:12px;font-family:var(--body);font-weight:700;color:#fff;background:var(--brick);border-radius:6px;padding:2px 7px}
+.ver h3{font-family:var(--round);font-weight:400;font-size:21px;margin:2px 0 10px;color:var(--wood-dark)}
+.ver ul{margin:0;padding:0 0 0 18px;font-size:15px;color:var(--ink-soft);line-height:1.6}
+.ver li+li{margin-top:4px}
+/* roadmap: future versions as silhouettes */
+.future{position:relative;width:150px;height:118px;display:flex;align-items:flex-end;justify-content:center}
+.sil{display:block;background:#dcc3a1;-webkit-mask:var(--m) center bottom/contain no-repeat;mask:var(--m) center bottom/contain no-repeat}
+.qb{position:absolute;top:0;right:4px;width:32px;height:32px;border-radius:50%;border:2px dashed #c9a37a;background:var(--paper);color:var(--wood);font-family:var(--round);font-size:19px;line-height:28px;text-align:center}
+.vil .sil{position:absolute;bottom:0}
+.vil .a{left:6px;width:52px;height:60px}.vil .b{left:46px;width:62px;height:76px;bottom:8px}.vil .c{right:8px;width:50px;height:58px}
+.polaroid{width:96px;height:104px;background:#fffdf8;border:2px solid #e3cfb2;border-radius:6px;padding:8px 8px 22px;transform:rotate(-6deg);box-shadow:0 4px 0 #ecdcc4}
+.polaroid .sil{width:100%;height:100%;background:#e3cba8}
+.deco .sil{width:84px;height:100px}
+.deco svg{position:absolute}
+.duo .sil{width:62px;height:66px}
+.duo .flip{transform:scaleX(-1)}
+@media (max-width:900px){.future{zoom:.8}}
+@media (max-width:520px){.future{zoom:.62}}
+.road-note{margin-top:26px;font-size:15px;color:var(--ink-soft)}
 
-.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.road article{border-top:3px solid var(--line);padding-top:16px}
-.road article.now{border-top-color:var(--accent)}
-.road .v{font-family:var(--font-pixel);font-size:13px;color:var(--ink-soft)}
-.road h3{font-size:21px;margin-top:4px}
-.road ul{margin:10px 0 0;padding-left:1.1em;font-size:14px;color:var(--ink-soft);display:grid;gap:3px}
+/* launch section */
+.launch{background:var(--wood);padding:104px 0 110px;position:relative}
+.launch::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 2px,transparent 2px 46px);pointer-events:none}
+.launch-box{position:relative;max-width:640px;margin:0 auto;background:var(--paper);border-radius:20px;padding:52px clamp(20px,5vw,48px) 40px;border:3px solid var(--wood-dark);box-shadow:0 10px 0 var(--wood-dark)}
+.sign{position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:#c98a55;color:#fff8ec;font-family:var(--round);font-size:20px;padding:8px 24px;border-radius:10px;border:3px solid var(--wood-dark);white-space:nowrap}
+.launch-box h2{text-align:center;margin-bottom:10px}
+.launch-box .lead{text-align:center;margin:0 auto 28px;font-size:16px}
+.field{margin-bottom:20px}
+.field > label,.field > .lbl{display:block;font-weight:700;font-size:15px;margin-bottom:8px}
+.field > label.consent,.field > label.check{display:flex;font-weight:400;margin-bottom:0}
+.field > label.consent{font-size:14px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:inline-block;padding:10px 18px;border-radius:10px;background:#fff;border:2px solid var(--line);font-size:15px;line-height:1.4;cursor:pointer;transition:background .12s,border-color .12s,color .12s}
+.opt input:checked + span{background:var(--wood-dark);border-color:var(--wood-dark);color:#fff}
+.opt input:focus-visible + span{outline:3px solid var(--river);outline-offset:2px}
+.opt input:disabled + span{opacity:.45;cursor:not-allowed}
+.check{display:flex;gap:10px;align-items:center;font-size:15px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--wood-dark);margin:0}
+.launch-box .submit{width:100%;font-size:19px;padding:16px;margin-top:8px}
+.field.invalid input[type=email],.field.invalid .opt span{border-color:#d0613a}
+.err{display:none;color:#b23c17;font-size:13px;margin-top:6px}
+.invalid > .err,.invalid .err{display:block}
 
-.cta{background:var(--band);color:var(--band-ink)}
-.cta .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:80px}
-.cta h2{font-size:clamp(30px,4vw,44px)}
-.cta p.lead{margin-top:14px;color:var(--band-soft);max-width:28em}
-.cta .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--band-ink)}
-.cta .pill i{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-.cta .otters{display:flex;gap:10px;align-items:flex-end;margin-top:28px}
-.cta .otters img{height:64px;width:auto}
-.card{background:var(--paper);color:var(--ink);border-radius:16px;padding:26px;display:grid;gap:16px}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.seg input{position:absolute;opacity:0;pointer-events:none}
-.seg label{display:block;text-align:center;padding:11px;border:2px solid var(--line);border-radius:10px;font-weight:700;cursor:pointer;margin:0}
-.seg input:checked+label{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
-.seg input:focus-visible+label{outline:3px solid var(--river);outline-offset:2px}
-.card .btn{width:100%}
-.fine{font-size:12px;color:var(--ink-soft)}
+.peek{position:absolute;right:34px;top:-74px;width:108px;pointer-events:none}
+.runner{position:absolute;left:15.6%;top:78px;width:62px;z-index:2;pointer-events:none}
+@media (max-width:900px){.runner{display:none}}
+@media (max-width:520px){.peek{width:84px;top:-58px;right:18px}}
 
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:28px;font-size:13px;color:var(--ink-soft)}
+/* collapsible feedback */
+.fb{margin-top:30px;border-top:2px dashed var(--line);padding-top:22px}
+.fb summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--round);font-size:19px;color:var(--wood-dark)}
+.fb summary::-webkit-details-marker{display:none}
+.fb summary small{font-family:var(--body);font-size:13px;color:var(--ink-soft);font-weight:500}
+.fb summary .arrow{flex:none;width:30px;height:30px;border-radius:8px;background:#f2e3cc;display:grid;place-items:center;transition:transform .2s}
+.fb[open] summary .arrow{transform:rotate(180deg)}
+.fb-body{margin-top:18px}
+.q{padding:16px 0;border-bottom:1px solid var(--line)}
+.q:last-of-type{border-bottom:0}
+.q .qt{font-weight:700;font-size:16px;margin-bottom:10px}
+.q .qt small{font-weight:500;color:var(--ink-soft);font-size:13px;margin-left:6px}
+.q .opt span{padding:8px 13px;font-size:14px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scale .opt span{display:block;text-align:center;font-family:var(--round);font-size:18px;padding:9px 0}
+.scale-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);margin-top:6px}
+.fb .btn{margin-top:16px}
+textarea{min-height:90px;resize:vertical}
+
+footer{background:var(--wood-dark);color:#e9d3b5;padding:34px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer .brand{color:#fff3df;font-size:18px}
+footer .brand img{width:28px;height:28px}
 
 @media (max-width:900px){
-  .hero .wrap,.cta .wrap,.step,.step.wide .intro{grid-template-columns:minmax(0,1fr);gap:28px}
-  .cards.five{grid-template-columns:repeat(5,minmax(150px,1fr))}
-  .cards.six{grid-template-columns:repeat(6,minmax(130px,1fr))}
-  .cards{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
-  .cards li{scroll-snap-align:start}
-  .screen{aspect-ratio:16/10}
-  .road{grid-template-columns:repeat(2,minmax(0,1fr))}
-  section{padding-block:64px}
+  .road{grid-template-columns:1fr;gap:0}
+  .road::before{left:58px;right:auto;top:20px;bottom:20px;width:12px;height:auto;background:repeating-linear-gradient(180deg,#e8c99a 0 18px,#efd6ae 18px 36px)}
+  .ver{display:grid;grid-template-columns:128px 1fr;gap:14px;padding:10px 0}
+  .ver .pic{height:auto;align-items:center}
+  .ver .pic img{max-height:96px}
+  .ver .card{margin-top:0}
+}
+@media (max-width:860px){
+  .hero{padding-top:30px}
+  .hero-grid,.split,.shots{grid-template-columns:1fr;gap:28px}
+  .board-inner{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr;row-gap:36px}
+  .flow::before{display:none}
+  .stages{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .stg .track{margin:0 -3px}
+  .stg .pic{height:100px}
+  .stg img{max-height:92px}
+  .stg b{font-size:15px}
+  section.block{padding:76px 0}
+  .chip{font-size:12px;padding:2px 6px}
+  .privacy{grid-template-columns:1fr;gap:16px;text-align:left}
+  .privacy img{width:110px}
+  .scene{border-radius:14px 14px 0 0}
 }
 @media (max-width:520px){
-  .screen{aspect-ratio:4/5}
-  .cap{font-size:13px;left:8px;right:8px;bottom:8px;padding:8px 8px 8px 12px}
-  .rest .win{left:5%;top:13%;width:72%}
-  .rest .input{top:3.5%;right:4%}
-  .rest .timer{left:5%;top:47%;padding:4px 10px}
-  .rest .otter{left:44%;width:52%;bottom:27%;height:30%}
-  .build{background:linear-gradient(var(--sky) 0 50%,var(--ground) 50% 100%)}
-  .build .lot{width:58%;height:40%;bottom:30%;left:58%}
-  .build .worker{left:3%;width:30%;bottom:30%;height:20%}
-  .build .hud{flex-wrap:wrap;padding:8px 10px;font-size:12px}
-  .build .hud .track{flex-basis:100%;order:3}
-  .road{grid-template-columns:minmax(0,1fr)}
-  .note{grid-template-columns:minmax(0,1fr)}
-  .bubble{min-width:0}
-  .bubble .clock{font-size:14px}
-  .housechip{padding:6px 8px 6px 6px}
-  .housechip .hi{width:34px;height:34px}.housechip .hi img{max-width:34px;max-height:34px}
-  .bar{width:70px}
-  .top .brand small{display:none}
-}
-@media (prefers-reduced-motion:reduce){
-  .sprite,.build .lot img.pop,.village .plot img,.sparkle,.rest .input .k{animation:none!important}
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .tag{font-size:12.5px;padding:4px 9px}
+  .top .btn{padding:8px 12px;font-size:14px}
+  .inline{flex-direction:column}
+  .inline .btn{width:100%}
+  .ver{grid-template-columns:96px 1fr}
+  .road::before{left:42px}
+  .ver .pic img{max-height:76px}
+  .sign{font-size:17px;padding:7px 18px}
 }
 </style>
 </head>
 <body>
 
-
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="수달공방 처음으로">
-      <img src="assets/idle.webp" alt="">
-      <b>수달공방</b><small>OTTER WORKSHOP</small>
-    </a>
-    <a class="btn sm" href="#join">출시 알림 받기</a>
+    <a class="brand" href="#"><img src="/assets/icon.png" alt="">수달공방</a>
+    <a class="btn btn-go" href="#launch">출시 알림 받기</a>
   </div>
 </header>
 
 <main>
-<section class="hero" style="padding-block:0">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow">Windows · macOS 데스크톱 공부 타이머 · 출시 준비 중</p>
-      <h1>공부 시간은 집으로,<br><span class="mark">완성한 집은</span><br><span class="mark">나만의 마을로.</span></h1>
-      <p class="lede">공부를 시작하면 바탕화면 한쪽에서 수달이 같이 일해요. 내가 공부한 시간만큼 수달이 집을 짓고, 집이 모이면 마을이 돼요.</p>
-
-      <form class="signup" id="heroForm" novalidate data-source="hero">
-        <div class="field">
-          <label for="heroEmail">이메일</label>
-          <div class="row">
-            <input type="email" id="heroEmail" name="email" placeholder="name@example.com" autocomplete="email" required>
-            <button class="btn" type="submit">출시 알림 받기</button>
-          </div>
-        </div>
-        <div class="hp" aria-hidden="true"><label for="heroWeb">웹사이트</label><input id="heroWeb" name="website" tabindex="-1" autocomplete="off"></div>
-        <label class="consent" for="heroAgree"><input type="checkbox" id="heroAgree" name="agree" required><span>(필수) 개인정보 수집·이용에 동의합니다</span></label>
-        <details class="policy" id="heroPolicy"><summary>자세히 보기</summary>
-          <dl>
-            <dt>수집 항목</dt><dd>이메일 주소, 사용하는 OS(선택), 테스트 참여 의향(선택)</dd>
-            <dt>수집 목적</dt><dd>서비스 출시 알림 발송, 출시 전 테스트 안내</dd>
-            <dt>보유 기간</dt><dd>출시 알림 발송 후 파기</dd>
-            <dt>거부 권리</dt><dd>동의하지 않을 수 있으며, 동의하지 않으면 출시 알림을 받을 수 없어요.</dd>
-          </dl>
-        </details>
-        <p class="msg" id="heroMsg" role="status" aria-live="polite"></p>
-      </form>
-
-      <ul class="ticks">
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>출시하는 날, 이 메일로 가장 먼저 알려드려요</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>알림 말고 다른 메일은 보내지 않아요</li>
-      </ul>
-    </div>
-
-    <div>
-      <div class="desk" id="desk" aria-label="수달공방 체험 데모: 바탕화면에서 수달이 공부를 함께하는 모습">
-        <div class="win" aria-hidden="true">
-          <div class="win-bar"><i></i><i></i><i></i><span>인강 · 자료구조 3강</span></div>
-          <div class="slide">
-            <b>스택과 큐</b>
-            <span>LIFO · FIFO 구조 비교</span>
-            <div class="stack"><div style="height:30%"></div><div style="height:55%"></div><div style="height:80%"></div><div style="height:45%"></div></div>
-            <div class="prog"><i></i></div>
-          </div>
-        </div>
-        <div class="housechip">
-          <div class="hi"><img id="houseImg" src="assets/stage1.webp" alt="짓고 있는 집"></div>
-          <div><b id="houseLabel">1번째 집 · 터 다지기</b><span id="housePct">0%</span><div class="bar"><i id="houseBar"></i></div></div>
-        </div>
-        <div class="buddy">
-          <div class="bubble">
-            <div class="t"><span><i class="dot" id="stateDot"></i><span id="stateText">공부 중</span></span><span id="villageText">마을 0/6</span></div>
-            <div class="clock" id="clock">00:00:00</div>
-          </div>
-          <div class="stage"><img class="sprite work" id="otterImg" src="assets/work.webp" alt="망치로 통나무를 다듬는 수달"></div>
-        </div>
-        <div class="taskbar" aria-hidden="true"></div>
-      </div>
-      <p class="hint" id="hint">마우스와 키보드를 잠깐 멈춰 보세요. <b>5초</b>면 수달이 졸기 시작해요.</p>
-    </div>
-  </div>
-</section>
-
-<section id="states">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">수달 상태</p>
-      <h2>내가 공부하는 동안,<br>수달도 옆에서 일해요</h2>
-      <p>키보드와 마우스 입력이 멈추면 수달도 졸다가 잠들어요. 다시 손을 움직이면 깜짝 놀라 깨어나서 하던 일을 이어가요.</p>
-    </div>
-
-    <div class="player" id="restPlayer" aria-label="수달 상태 자동 재생 장면">
-      <div class="screen rest">
-        <div class="win" aria-hidden="true">
-          <div class="win-bar"><i></i><i></i><i></i><span>인강 · 자료구조 3강</span></div>
-          <div class="slide"><b>스택과 큐</b><span>LIFO · FIFO 구조 비교</span><div class="stack"><div style="height:30%"></div><div style="height:55%"></div><div style="height:80%"></div><div style="height:45%"></div></div><div class="prog"><i></i></div></div>
-        </div>
-        <div class="timer" aria-hidden="true"><small><i class="dot" data-r="dot"></i><span data-r="mode">공부 전</span></small><span class="clock" data-r="clock">00:00:00</span></div>
-        <div class="input" data-r="input" aria-hidden="true"><span class="k">A</span><span data-r="inputText">입력 없음</span></div>
-        <div class="otter" aria-hidden="true"><img class="sprite idle" data-r="otter" src="assets/idle.webp" alt=""></div>
-        <svg class="cursor" data-r="cursor" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M4 2l15 9-6.5 1.5L16 20l-3 1.5-3.4-7.6L4 18z" fill="#fff" stroke="#2b1d16" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <div class="taskbar" aria-hidden="true"></div>
-        <div class="cap">
-          <span class="n" data-r="n">1 / 5</span><span class="txt" data-r="cap" aria-live="polite">공부를 시작하기 전에는 마을에서 기다려요.</span>
-          <button class="pp" type="button" data-pp aria-label="일시정지"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg></button>
-        </div>
-      </div>
-      <ol class="cards five">
-        <li><button class="card-btn" type="button" data-ch="0"><span class="pic"><img src="assets/idle.webp" alt="가만히 앉아 있는 수달" loading="lazy"></span><span class="chip">공부 전</span><h3>대기</h3><p>공부를 시작하기 전에는 마을에서 기다려요.</p><i class="fill"></i></button></li>
-        <li><button class="card-btn" type="button" data-ch="1"><span class="pic"><img src="assets/work.webp" alt="망치로 통나무를 다듬는 수달" loading="lazy"></span><span class="chip on">공부 시간 쌓임</span><h3>작업</h3><p>공부를 시작하면 바탕화면에 나와 집을 지어요.</p><i class="fill"></i></button></li>
-        <li><button class="card-btn" type="button" data-ch="2"><span class="pic"><img src="assets/sleepy.webp" alt="하품하며 조는 수달" loading="lazy"></span><span class="chip on">무입력 5분</span><h3>졸림</h3><p>입력이 한동안 없으면 꾸벅꾸벅 졸아요. 공부 시간은 계속 쌓여요.</p><i class="fill"></i></button></li>
-        <li><button class="card-btn" type="button" data-ch="3"><span class="pic"><img src="assets/sleep.webp" alt="엎드려 자는 수달" loading="lazy"></span><span class="chip">무입력 10분 · 휴식</span><h3>잠듦</h3><p>더 오래 멈추거나 휴식 버튼을 누르면 잠들고, 공부 시간도 멈춰요.</p><i class="fill"></i></button></li>
-        <li><button class="card-btn" type="button" data-ch="4"><span class="pic"><img src="assets/surprise.webp" alt="눈이 동그래진 수달" loading="lazy"></span><span class="chip on">다시 입력하면</span><h3>깜짝 놀람</h3><p>손을 움직이면 0.5초 동안 깜짝 놀라고, 다시 일하러 가요.</p><i class="fill"></i></button></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section class="how" id="how">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">이렇게 쌓여요</p>
-      <h2>공부 시작 한 번이면,<br>나머지는 수달이 지어요</h2>
-    </div>
-
-    <div class="step">
-      <div class="txt">
-        <span class="num">01</span>
-        <h3>공부 시작을 누르면<br>수달이 바탕화면에 나와요</h3>
-        <p>인강을 틀어 두든 문서를 쓰든, 어떤 창을 쓰고 있어도 화면 한쪽에서 수달이 같이 일해요. 마우스를 올리면 공부 시간과 빠른 버튼이 보여요.</p>
-        <div class="facts"><span class="chip">투명 영역은 클릭이 통과돼요</span><span class="chip">드래그로 자리 옮기기</span></div>
-      </div>
-      <div class="panel appear">
-        <div class="mini" aria-hidden="true"><div class="w"></div><img class="sprite work" src="assets/work.webp" alt=""></div>
-        <div class="btns" aria-hidden="true"><span class="fake go">▶ 공부 시작</span><span class="fake">휴식</span><span class="fake">종료</span></div>
-      </div>
-    </div>
-
-    <div class="step wide">
-      <div class="intro">
-        <div class="txt">
-          <span class="num">02</span>
-          <h3>30분 공부하면 집 한 채,<br>여섯 채면 마을 하나</h3>
-        </div>
-        <p>공부 시간이 쌓이는 만큼 집이 다섯 단계로 지어져요. 다 짓고 남은 시간은 다음 집으로 이어지고, 여섯 채가 모이면 마을이 완성돼요. 집 한 채에 필요한 시간은 5분부터 240분까지 바꿀 수 있어요.</p>
-      </div>
-      <div class="player" id="housePlayer" aria-label="집 짓기 자동 재생 장면">
-        <div class="screen">
-          <div class="build" data-r="build" aria-hidden="true">
-            <div class="hud"><b data-r="hudLabel">1번째 집 짓는 중</b><span class="track"><i data-r="hudBar"></i></span><b data-r="hudPct">0%</b><span class="clock" data-r="hudClock">00:00 / 30:00</span></div>
-            <div class="worker"><img class="sprite work" src="assets/work.webp" alt=""></div>
-            <div class="lot"><img data-r="house" src="assets/stage1.webp" alt=""></div>
-            <div class="sparkle" data-r="done" hidden>1번째 집 완성!</div>
-          </div>
-          <div class="village" data-r="village" aria-hidden="true" hidden>
-            <div class="vframe">
-              <img src="assets/hero.webp" alt="">
-              <div class="badge" data-r="badge">완성 1 / 6</div>
-              <div data-r="plots"></div>
-              <div class="sparkle" data-r="vdone" style="bottom:auto;top:13%" hidden>마을 완성! 다음 마을로 이어져요</div>
-            </div>
-          </div>
-          <div class="cap">
-            <span class="n" data-r="n">1 / 6</span><span class="txt" data-r="cap" aria-live="polite">공부를 시작하면 터를 다지는 것부터 시작해요.</span>
-            <button class="pp" type="button" data-pp aria-label="일시정지"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg></button>
-          </div>
-        </div>
-        <ol class="cards six">
-          <li><button class="card-btn" type="button" data-ch="0"><span class="pic"><img src="assets/stage1.webp" alt="통나무 몇 개" loading="lazy"></span><span class="chip">0%</span><h3>터 다지기</h3><p>통나무를 모아 자리를 잡아요.</p><i class="fill"></i></button></li>
-          <li><button class="card-btn" type="button" data-ch="1"><span class="pic"><img src="assets/stage2.webp" alt="둥근 나무 뼈대" loading="lazy"></span><span class="chip">20%</span><h3>뼈대</h3><p>둥근 나무 뼈대를 세워요.</p><i class="fill"></i></button></li>
-          <li><button class="card-btn" type="button" data-ch="2"><span class="pic"><img src="assets/stage3.webp" alt="나무 벽을 두른 집" loading="lazy"></span><span class="chip">45%</span><h3>벽</h3><p>나무 벽을 두르고 문을 내요.</p><i class="fill"></i></button></li>
-          <li><button class="card-btn" type="button" data-ch="3"><span class="pic"><img src="assets/stage4.webp" alt="지붕을 올린 집" loading="lazy"></span><span class="chip">70%</span><h3>지붕</h3><p>기와 지붕과 굴뚝을 올려요.</p><i class="fill"></i></button></li>
-          <li><button class="card-btn" type="button" data-ch="4"><span class="pic"><img src="assets/stage5.webp" alt="창문과 꽃으로 꾸민 완성된 집" loading="lazy"></span><span class="chip on">100%</span><h3>완성</h3><p>창에 불이 켜지고 꽃이 피어요.</p><i class="fill"></i></button></li>
-          <li><button class="card-btn" type="button" data-ch="5"><span class="pic thumb"><img src="assets/hero.webp" alt="집터 여섯 곳이 있는 마을" loading="lazy"></span><span class="chip on">집 6채</span><h3>마을</h3><p>여섯 채가 모이면 마을이 완성돼요.</p><i class="fill"></i></button></li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="txt">
-        <span class="num">03</span>
-        <h3>쌓인 시간은<br>달력으로 돌아봐요</h3>
-        <p>공부를 끝내면 이번에 공부한 시간, 쉰 시간, 완성한 집 수를 정리해서 보여줘요. 날짜별, 월별 공부 시간은 달력에 남고, 완성한 마을은 언제든 다시 볼 수 있어요.</p>
-        <div class="facts"><span class="chip">지난 마을 다시 보기</span><span class="chip">자동 저장 · 비정상 종료 복구</span></div>
-      </div>
-      <div class="panel flush"><img src="assets/record.webp" alt="날짜마다 공부 시간이 표시된 월별 공부 기록 달력" loading="lazy" width="900" height="640"></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="note">
-      <img src="assets/sleepy.webp" alt="">
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <h3>수달은 공부 내용을 보지 않아요</h3>
-        <ul>
-          <li>키보드와 마우스를 쓰고 있는지만 확인해요. 무엇을 입력했는지는 보지 않아요.</li>
-          <li>영상을 보거나 종이책을 읽는 동안에는 입력이 없어서 휴식으로 바뀔 수 있어요. 졸림과 휴식까지 걸리는 시간은 설정에서 늘릴 수 있어요.</li>
-          <li>공부 기록은 내 컴퓨터에 저장돼요.</li>
+        <span class="tag">Windows · macOS 데스크톱 공부 타이머 · 출시 준비 중</span>
+        <h1>공부 시간은 집으로,<br><span class="l2">완성한 집은</span><br><span class="l3">나만의 마을로.</span></h1>
+      </div>
+      <div class="hero-copy">
+        <p>공부를 시작하면 바탕화면 한쪽에서 수달이 같이 일해요. 내가 공부한 시간만큼 수달이 집을 짓고, 집이 모이면 마을이 돼요.</p>
+        <form class="signup" data-form="hero" novalidate>
+          <div class="field">
+            <label class="sr" for="heroEmail">이메일</label>
+            <div class="inline">
+              <input type="email" id="heroEmail" name="email" placeholder="이메일 주소" autocomplete="email" required>
+              <button class="btn btn-go" type="submit">출시 알림 받기</button>
+            </div>
+            <div class="err">이메일 주소를 확인해 주세요.</div>
+          </div>
+          <div class="field consent-field" style="margin-bottom:0">
+            <label class="consent"><input type="checkbox" name="consent" required><span>(필수) 개인정보 수집·이용에 동의합니다<button type="button" class="more" aria-expanded="false">자세히 보기</button></span></label>
+            <div class="err">알림을 받으려면 동의가 필요해요.</div>
+          </div>
+          <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-msg" role="alert"></div>
+        </form>
+        <ul class="promise">
+          <li>출시하는 날, 이 메일로 가장 먼저 알려드려요</li>
+          <li>알림 말고 다른 메일은 보내지 않아요</li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="roadmap" style="padding-top:24px">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">앞으로 지을 것들</p>
-      <h2>마을은 계속 넓어져요</h2>
-      <p>첫 버전은 집 짓기와 공부 기록부터 시작해요. 다음 기능의 순서는 신청해 주신 분들의 의견을 듣고 정해요.</p>
-    </div>
-    <div class="road">
-      <article class="now"><span class="v">V2</span><h3>마을 둘러보기</h3><ul><li>마을 확대·축소, 화면 이동</li><li>집마다 공부 기록 연결</li><li>주간·월간 리포트</li></ul></article>
-      <article><span class="v">V3</span><h3>기록 남기고 공유</h3><ul><li>마을과 공부 시간 인증 사진</li><li>스토리·피드 비율로 저장</li><li>과목과 메모 남기기</li></ul></article>
-      <article><span class="v">V4</span><h3>꾸미기와 상점</h3><ul><li>공부 시간으로 모으는 재화</li><li>집과 수달 꾸미기 아이템</li></ul></article>
-      <article><span class="v">V5</span><h3>함께 공부</h3><ul><li>친구 수달과 같이 공부</li><li>친구 마을 놀러 가기</li><li>공부 시간을 모아 공동 건물 짓기</li></ul></article>
-    </div>
-  </div>
-</section>
-
-<section class="cta" id="join" style="padding-block:0">
-  <div class="wrap">
-    <div>
-      <span class="pill"><i></i>출시 준비 중</span>
-      <h2 style="margin-top:16px">출시되면<br>가장 먼저 알려드릴게요</h2>
-      <p class="lead">수달공방은 아직 출시 전인 Windows · macOS 데스크톱 앱이에요. 지금 신청하면 출시하는 날 메일로 알려드려요. 앱을 내려받거나 결제하는 절차는 없어요.</p>
-      <div class="otters" aria-hidden="true"><img src="assets/idle.webp" alt=""><img src="assets/work.webp" alt=""><img src="assets/sleep.webp" alt=""></div>
-    </div>
-    <form class="card" id="joinForm" novalidate data-source="footer">
-      <div class="field">
-        <label for="joinEmail">이메일</label>
-        <input type="email" id="joinEmail" name="email" placeholder="name@example.com" autocomplete="email" required>
-      </div>
-      <fieldset style="border:0;margin:0;padding:0">
-        <legend class="label">사용하는 OS</legend>
-        <div class="seg">
-          <input type="radio" name="os" id="osWin" value="windows"><label for="osWin">Windows</label>
-          <input type="radio" name="os" id="osMac" value="macos"><label for="osMac">macOS</label>
+    <div class="wrap">
+      <div class="scene" role="img" aria-label="수달이 마을의 빈 땅에 집을 짓고 있는 장면">
+        <div class="plot" style="left:22.9%;top:52.5%"><img src="/assets/house_4_red.png" alt=""></div>
+        <div class="plot" id="building" style="left:41.9%;top:52.5%">
+          <img class="stage on" src="/assets/house_0.png" alt="">
+          <img class="stage" src="/assets/house_1.png" alt="">
+          <img class="stage" src="/assets/house_2.png" alt="">
+          <img class="stage" src="/assets/house_3_green.png" alt="">
+          <img class="stage" src="/assets/house_4_green.png" alt="">
+          <img src="/assets/house_4_green.png" alt="" style="visibility:hidden">
         </div>
-      </fieldset>
-      <label class="consent" for="joinBeta"><input type="checkbox" id="joinBeta" name="beta"><span>출시 전 테스트에 참여하고 싶어요 <span class="fine">(선택)</span></span></label>
-      <div class="hp" aria-hidden="true"><label for="joinWeb">웹사이트</label><input id="joinWeb" name="website" tabindex="-1" autocomplete="off"></div>
-      <label class="consent" for="joinAgree"><input type="checkbox" id="joinAgree" name="agree" required><span>(필수) 개인정보 수집·이용에 동의합니다</span></label>
-      <details class="policy" id="joinPolicy"><summary>자세히 보기</summary>
-        <dl>
-          <dt>수집 항목</dt><dd>이메일 주소, 사용하는 OS(선택), 테스트 참여 의향(선택)</dd>
-          <dt>수집 목적</dt><dd>서비스 출시 알림 발송, 출시 전 테스트 안내</dd>
-          <dt>보유 기간</dt><dd>출시 알림 발송 후 파기</dd>
-          <dt>거부 권리</dt><dd>동의하지 않을 수 있으며, 동의하지 않으면 출시 알림을 받을 수 없어요.</dd>
-        </dl>
-      </details>
-      <button class="btn" type="submit">출시 알림 신청하기</button>
-      <p class="msg" id="joinMsg" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
+        <div class="worker" style="left:50.5%;top:58.5%"><img class="bob" id="workerImg" src="/assets/otter_axe.png" alt=""></div>
+      </div>
+      <div class="board" aria-hidden="true">
+        <div class="board-inner">
+          <div class="card-paper">
+            <div class="build-head"><span>1번째 마을 · 2번째 집 짓는 중</span><span id="pct">0%</span></div>
+            <div class="bar"><i id="barFill"></i></div>
+            <div class="chips" id="chips">
+              <span class="chip on">터 다지기</span><span class="chip">뼈대</span><span class="chip">벽</span><span class="chip">지붕</span><span class="chip">완성</span>
+            </div>
+          </div>
+          <div class="timer">
+            <small>공부 중</small>
+            <b id="clock">00:00:00</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="together">
+    <div class="wrap split">
+      <div>
+        <h2 class="h2">말 걸지 않고,<br>옆에만 있어 줘요</h2>
+        <p class="lead">친구랑 같이 공부하면 집중이 잘 되는 건 대화 때문이 아니라 누군가 옆에서 같이 하고 있어서예요. 수달공방은 그 자리를 수달이 채워요.</p>
+        <ul class="facts">
+          <li>공부 시작을 누르면 수달이 바탕화면 한쪽에 나와 나무를 나르고 망치질을 해요.</li>
+          <li>인강, 유튜브, 코딩처럼 화면을 보며 공부해도 다른 창을 가리지 않아요.</li>
+          <li>수달 크기와 처음 나올 자리는 설정에서 고르고, 더블클릭하면 작게 접혀요.</li>
+        </ul>
+      </div>
+      <div class="mac">
+        <div class="mac-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>바탕화면</span></div>
+        <div class="mac-body"><video src="/assets/overlay.mp4?v=10231120" poster="/assets/overlay_poster.jpg?v=10231120" autoplay muted loop playsinline aria-label="수달공방 창 옆 바탕화면에서 수달이 망치질하고, 졸고, 잠들었다 깨는 모습"></video><button class="vbtn" type="button" aria-label="영상 멈추기"><svg class="ic-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.6" height="12" rx="1" fill="currentColor"/><rect x="8.4" y="1" width="3.6" height="12" rx="1" fill="currentColor"/></svg><svg class="ic-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block paper-bg">
+    <div class="wrap">
+      <h2 class="h2">타이머를 안 눌러도<br>수달이 알아서 알아채요</h2>
+      <p class="lead">키보드와 마우스를 쓰는지로 공부 중인지 판단해요. 자리를 비우면 감시하는 대신 수달이 꾸벅꾸벅 졸다가 잠들어요.</p>
+      <div class="flow">
+        <div class="state">
+          <div class="pic"><img src="/assets/otter_axe.png" alt="망치질하는 수달"></div>
+          <h3>작업</h3>
+          <span class="when">공부 중</span>
+          <p>나무를 나르고 망치질하며 집을 지어요. 공부 시간이 쌓여요.</p>
+        </div>
+        <div class="state">
+          <div class="pic"><img src="/assets/otter_drowsy.png" alt="하품하는 수달"></div>
+          <h3>졸림</h3>
+          <span class="when">입력 없이 5분</span>
+          <p>하품하며 꾸벅꾸벅 졸아요. 공부 시간은 계속 인정돼요.</p>
+        </div>
+        <div class="state">
+          <div class="pic"><img src="/assets/otter_sleep.png" alt="웅크려 자는 수달"></div>
+          <h3>휴식</h3>
+          <span class="when">10분 또는 휴식 버튼</span>
+          <p>웅크려 잠들고 집 짓기도 멈춰요. 휴식 시간은 따로 기록돼요.</p>
+        </div>
+        <div class="state">
+          <div class="pic"><img src="/assets/otter_surprise.png" alt="깜짝 놀란 수달"></div>
+          <h3>깜짝</h3>
+          <span class="when">다시 입력하면</span>
+          <p>화들짝 깨어나서 하던 일을 다시 시작해요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2 class="h2">30분 공부하면 집 한 채</h2>
+      <p class="lead">목표를 정할 필요가 없어요. 공부한 만큼 집이 한 단계씩 올라가고, 남은 시간은 다음 집으로 넘어가요.</p>
+      <div class="stages" id="stages">
+        <img class="stage-runner" id="stageRunner" src="/assets/otter_run.png" alt="">
+        <div class="stg"><div class="pic"><img src="/assets/house_0.png" alt=""></div><div class="track"><i></i></div><b>터 다지기</b><span>0%</span></div>
+        <div class="stg"><div class="pic"><img src="/assets/house_1.png" alt=""></div><div class="track"><i></i></div><b>뼈대</b><span>20%</span></div>
+        <div class="stg"><div class="pic"><img src="/assets/house_2.png" alt=""></div><div class="track"><i></i></div><b>벽</b><span>45%</span></div>
+        <div class="stg"><div class="pic"><img src="/assets/house_3_red.png" alt=""></div><div class="track"><i></i></div><b>지붕</b><span>70%</span></div>
+        <div class="stg"><div class="pic"><img src="/assets/house_4_red.png" alt=""></div><div class="track"><i></i></div><b>완성</b><span>100%</span></div>
+      </div>
+      <p class="note">지붕 색은 집마다 빨강, 초록으로 달라져요. 집 한 채에 걸리는 시간은 설정에서 바꿀 수 있어요.</p>
+    </div>
+  </section>
+
+  <section class="block paper-bg">
+    <div class="wrap">
+      <h2 class="h2">앱을 꺼도 마을은 남아요</h2>
+      <p class="lead">완성한 집은 마을에 하나씩 모이고, 여섯 채가 차면 다음 마을이 열려요. 다 지은 마을은 지난 마을에 그대로 남고, 다시 켜면 짓던 집부터 이어서 지어요. 날마다 얼마나 공부했는지는 달력에 남아요.</p>
+      <div class="shots">
+        <figure class="shot wide">
+          <div class="mac"><div class="mac-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>수달공방 · 마을</span></div><div class="mac-body"><video src="/assets/village2.mp4?v=10231120" poster="/assets/village2_poster.jpg?v=10231120" autoplay muted loop playsinline aria-label="공부 시간에 따라 마을에 빨간 지붕과 초록 지붕 집이 지어지는 화면"></video><button class="vbtn" type="button" aria-label="영상 멈추기"><svg class="ic-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.6" height="12" rx="1" fill="currentColor"/><rect x="8.4" y="1" width="3.6" height="12" rx="1" fill="currentColor"/></svg><svg class="ic-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg></button></div></div>
+          <figcaption>공부하는 동안 마을에 집이 하나씩 올라가요. 지붕은 빨강, 초록으로 번갈아 올라가요.</figcaption>
+        </figure>
+          <figure class="shot">
+            <div class="mac"><div class="mac-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>수달공방 · 지난 마을</span></div><div class="mac-body"><video src="/assets/pastvillage.mp4?v=10231120" poster="/assets/pastvillage_poster.jpg?v=10231120" autoplay muted loop playsinline aria-label="여섯 채를 채운 1번째 마을이 완성되고, 지난 마을에서 다시 볼 수 있는 화면"></video><button class="vbtn" type="button" aria-label="영상 멈추기"><svg class="ic-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.6" height="12" rx="1" fill="currentColor"/><rect x="8.4" y="1" width="3.6" height="12" rx="1" fill="currentColor"/></svg><svg class="ic-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg></button></div></div>
+            <figcaption>여섯 채를 채우면 마을이 완성돼요. 완성한 마을은 지난 마을에서 언제든 다시 볼 수 있어요.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="mac"><div class="mac-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>수달공방 · 기록</span></div><div class="mac-body"><img src="/assets/shot_record.webp?v=10231120" alt="월별 공부 시간 달력 화면"></div></div>
+            <figcaption>공부 기록. 날짜를 누르면 그날 공부한 세션이 보여요.</figcaption>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="privacy">
+        <img src="/assets/otter_peek.png" alt="">
+        <div>
+          <h2 class="h2" style="margin-bottom:4px">수달은 공부 내용을 보지 않아요</h2>
+          <ul>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="5" width="20" height="13" rx="3" fill="none" stroke="#6d8a57" stroke-width="2"/><path d="M5 9h2M9 9h2M13 9h2M7 13h8" stroke="#6d8a57" stroke-width="2" stroke-linecap="round"/></svg>
+              <div><b>키보드와 마우스를 쓰고 있는지만 확인해요.</b><span>무엇을 입력했는지는 보지 않아요.</span></div>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="#6d8a57" stroke-width="2"/><path d="M11 6v5l3 2" fill="none" stroke="#6d8a57" stroke-width="2" stroke-linecap="round"/></svg>
+              <div><b>영상을 보거나 종이책을 읽을 때는 휴식으로 바뀔 수 있어요.</b><span>입력이 없기 때문이에요. 졸림과 휴식까지 걸리는 시간은 설정에서 늘릴 수 있어요.</span></div>
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 9l8-6 8 6v10H3z" fill="none" stroke="#6d8a57" stroke-width="2" stroke-linejoin="round"/><path d="M9 19v-5h4v5" fill="none" stroke="#6d8a57" stroke-width="2"/></svg>
+              <div><b>공부 기록은 내 컴퓨터에 저장돼요.</b><span>계정도, 서버로 보내는 기록도 없어요.</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block paper-bg" id="roadmap">
+    <div class="wrap">
+      <h2 class="h2">앞으로 지을 것들</h2>
+      <p class="lead">마을은 계속 넓어져요. 첫 버전은 집 짓기와 공부 기록부터 시작해요.</p>
+      <div class="road">
+        <img class="runner" src="/assets/otter_run.png" alt="">
+        <div class="ver now">
+          <div class="pic"><img src="/assets/house_4_red.png" alt=""></div>
+          <div class="card">
+            <div class="v">V1 <em>첫 버전</em></div>
+            <h3>집 짓기와 공부 기록</h3>
+            <ul><li>바탕화면 수달과 자동 측정</li><li>집 짓기와 마을</li><li>월별 공부 기록 달력</li></ul>
+          </div>
+        </div>
+        <div class="ver">
+          <div class="pic"><div class="future vil" aria-hidden="true"><span class="sil a" style="--m:url(/assets/house_4_green.png)"></span><span class="sil b" style="--m:url(/assets/house_4_red.png)"></span><span class="sil c" style="--m:url(/assets/house_4_green.png)"></span><span class="qb">?</span></div></div>
+          <div class="card">
+            <div class="v">V2</div>
+            <h3>마을 둘러보기</h3>
+            <ul><li>마을 확대·축소, 화면 이동</li><li>집마다 공부 기록 연결</li><li>주간·월간 리포트</li></ul>
+          </div>
+        </div>
+        <div class="ver">
+          <div class="pic"><div class="future" aria-hidden="true"><div class="polaroid"><span class="sil" style="--m:url(/assets/house_4_red.png)"></span></div><span class="qb">?</span></div></div>
+          <div class="card">
+            <div class="v">V3</div>
+            <h3>기록 남기고 공유</h3>
+            <ul><li>마을과 공부 시간 인증 사진</li><li>스토리·피드 비율로 저장</li><li>과목과 메모 남기기</li></ul>
+          </div>
+        </div>
+        <div class="ver">
+          <div class="pic"><div class="future deco" aria-hidden="true"><span class="sil" style="--m:url(/assets/house_4_green.png)"></span><svg style="left:14px;top:26px" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#e6c48f"/></svg><svg style="right:24px;top:44px;transform:scale(.7)" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#e6c48f"/></svg><svg style="left:28px;bottom:10px;transform:scale(.6)" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#e6c48f"/></svg><span class="qb">?</span></div></div>
+          <div class="card">
+            <div class="v">V4</div>
+            <h3>꾸미기와 상점</h3>
+            <ul><li>공부 시간으로 모으는 재화</li><li>집과 수달 꾸미기 아이템</li></ul>
+          </div>
+        </div>
+        <div class="ver">
+          <div class="pic"><div class="future duo" aria-hidden="true"><span class="sil" style="--m:url(/assets/otter_full.png)"></span><span class="sil flip" style="--m:url(/assets/otter_full.png)"></span><span class="qb">?</span></div></div>
+          <div class="card">
+            <div class="v">V5</div>
+            <h3>함께 공부</h3>
+            <ul><li>친구 수달과 같이 공부</li><li>친구 마을 놀러 가기</li><li>공부 시간을 모아 공동 건물 짓기</li></ul>
+          </div>
+        </div>
+      </div>
+      <p class="road-note">다음 기능의 순서는 신청해 주신 분들의 의견을 듣고 정해요.</p>
+    </div>
+  </section>
+
+  <section class="launch" id="launch">
+    <div class="wrap">
+      <div class="launch-box">
+        <img class="peek" src="/assets/otter_peek.png" alt="">
+        <div class="sign">출시 준비 중</div>
+        <h2 class="h2">출시되면<br>가장 먼저 알려드릴게요</h2>
+        <p class="lead">수달공방은 아직 출시 전인 Windows · macOS 데스크톱 앱이에요. 지금 신청하면 출시하는 날 메일로 알려드려요. 앱을 내려받거나 결제하는 절차는 없어요.</p>
+
+        <form class="signup" data-form="launch" novalidate>
+          <div class="field">
+            <label for="launchEmail">이메일</label>
+            <input type="email" id="launchEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <div class="err">이메일 주소를 확인해 주세요.</div>
+          </div>
+          <div class="field">
+            <span class="lbl" id="osLbl">사용하는 OS</span>
+            <div class="opts" role="group" aria-labelledby="osLbl">
+              <label class="opt"><input type="checkbox" name="os" value="Windows"><span>Windows</span></label>
+              <label class="opt"><input type="checkbox" name="os" value="macOS"><span>macOS</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="check"><input type="checkbox" name="beta"> 출시 전 테스트에 참여하고 싶어요 <span style="color:var(--ink-soft);font-size:13px">(선택)</span></label>
+          </div>
+          <div class="field consent-field">
+            <label class="consent"><input type="checkbox" name="consent" required><span>(필수) 개인정보 수집·이용에 동의합니다<button type="button" class="more" aria-expanded="false">자세히 보기</button></span></label>
+            <div class="err">알림을 받으려면 동의가 필요해요.</div>
+          </div>
+          <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn btn-go submit" type="submit">출시 알림 신청하기</button>
+          <div class="form-msg" role="alert"></div>
+        </form>
+
+        <details class="fb" id="feedback">
+          <summary>
+            <span>의견도 들려주실래요? <small>선택, 1분이면 돼요</small></span>
+            <span class="arrow" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="#4b2b17" stroke-width="2" stroke-linecap="round"/></svg></span>
+          </summary>
+          <form class="fb-body" id="fbForm" novalidate>
+            <div id="questions"></div>
+            <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn btn-plain" type="submit">의견 보내기</button>
+            <div class="form-msg" role="alert"></div>
+          </form>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 수달공방 (Otter Workshop)</span>
+    <span class="brand"><img src="/assets/icon.png" alt="">© 2026 수달공방 (Otter Workshop)</span>
     <span>Windows · macOS 데스크톱 앱 · 출시 준비 중</span>
   </div>
 </footer>
 
-<script src="config.js"></script>
+<template id="policyTpl">
+  <div class="policy">
+    <dl>
+      <dt>수집 항목</dt><dd>이메일, 사용하는 OS, 테스트 참여 희망 여부</dd>
+      <dt>이용 목적</dt><dd>출시 알림, 테스트 참여 안내</dd>
+      <dt>보관 기간</dt><dd>출시 알림을 보낸 뒤 바로 삭제해요</dd>
+    </dl>
+    <p>동의하지 않을 수 있지만, 그러면 출시 알림을 받을 수 없어요.</p>
+  </div>
+</template>
+
+<script src="/questions.js"></script>
 <script>
 (function(){
-const $=id=>document.getElementById(id);
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const pad=n=>String(n).padStart(2,'0');
-const hms=s=>{s=Math.floor(s);return pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60)};
-const ms=s=>{s=Math.floor(s);return pad(Math.floor(s/60))+':'+pad(s%60)};
-const SPRITE_ALT={idle:'가만히 앉아 있는 수달',work:'망치로 통나무를 다듬는 수달',sleepy:'졸고 있는 수달',sleep:'잠든 수달',surprise:'깜짝 놀란 수달'};
-function setSprite(img,name){
-  if(img.dataset.s===name)return; img.dataset.s=name;
-  img.src='assets/'+name+'.webp'; img.alt=img.alt?SPRITE_ALT[name]:'';
-  img.className='sprite '+name; if(name==='surprise'){void img.offsetWidth}
-}
+  var top=document.getElementById('top');
+  addEventListener('scroll',function(){top.classList.toggle('scrolled',scrollY>8)},{passive:true});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ref=new URLSearchParams(location.search).get('ref')||'';
 
-/* ---------- hero: live idle demo (1 real second = 1 study minute) ---------- */
-const SLEEPY=5000, SLEEP=10000, GOAL=30;
-const STAGES=[[0,'터 다지기','stage1'],[20,'뼈대','stage2'],[45,'벽','stage3'],[70,'지붕','stage4'],[100,'완성','stage5']];
-const stageOf=pct=>{let st=STAGES[0];for(const s of STAGES)if(pct>=s[0])st=s;return st};
-const heroOtter=$('otterImg');
-let state='work', last=Date.now(), studyMin=0, houseMin=0, houses=0, surpriseUntil=0, doneUntil=0;
-function show(s){
-  if(s===state)return; state=s;
-  setSprite(heroOtter,s);
-  $('stateText').textContent={work:'공부 중',sleepy:'졸림 · 공부 중',sleep:'자동 휴식',surprise:'깨어나는 중'}[s];
-  $('stateDot').classList.toggle('pause',s==='sleep');
-  $('hint').innerHTML={work:'마우스와 키보드를 잠깐 멈춰 보세요. <b>5초</b>면 수달이 졸기 시작해요.',
-    sleepy:'졸고 있어요. 공부 시간은 아직 쌓이는 중이에요. <b>10초</b>가 지나면 잠들어요.',
-    sleep:'잠들었어요. 공부 시간이 멈췄어요. 마우스를 움직여 깨워 보세요.',
-    surprise:'깼어요! 다시 집을 지으러 가요.'}[s]+(s==='work'?'':' <span style="opacity:.7">(실제 앱은 5분 · 10분)</span>');
-}
-function wake(){last=Date.now(); if(state==='sleepy'||state==='sleep'){show('surprise');surpriseUntil=Date.now()+600}}
-['pointermove','pointerdown','keydown','wheel','touchstart','scroll'].forEach(e=>addEventListener(e,wake,{passive:true}));
-function renderHouse(){
-  const pct=Math.min(100,Math.round(houseMin/GOAL*100)), st=stageOf(pct);
-  $('houseImg').src='assets/'+st[2]+'.webp';
-  $('houseLabel').textContent=(houses%6+1)+'번째 집 · '+st[1];
-  $('housePct').textContent=pct+'%';
-  $('houseBar').style.width=pct+'%';
-  $('villageText').textContent='마을 '+(houses%6)+'/6';
-}
-let prev=Date.now();
-function tick(){
-  const now=Date.now(), dt=(now-prev)/1000; prev=now; const idle=now-last;
-  if(state==='surprise'&&now>surpriseUntil)show('work');
-  if(state!=='surprise'){ if(idle>=SLEEP)show('sleep'); else if(idle>=SLEEPY)show('sleepy'); else if(state!=='work')show('work'); }
-  if(state!=='sleep'&&now>doneUntil){ studyMin+=dt; houseMin+=dt;
-    if(houseMin>=GOAL){houseMin=GOAL;renderHouse();houses++;doneUntil=now+1600;setTimeout(()=>{houseMin=0;renderHouse()},1600)} }
-  $('clock').textContent=hms(studyMin*60);
-  if(now>doneUntil)renderHouse();
-}
-renderHouse(); setInterval(tick,250);
-
-/* ---------- autoplay scene player: scene on top, step cards below ---------- */
-const PLAY='<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg>';
-const PAUSE='<svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>';
-function Player(root,chapters){
-  const R={};root.querySelectorAll('[data-r]').forEach(e=>R[e.dataset.r]=e);
-  const cards=[...root.querySelectorAll('[data-ch]')], pp=root.querySelector('[data-pp]');
-  let i=0, el=0, playing=!reduce, visible=false, last=performance.now();
-  function enter(n){
-    i=(n+chapters.length)%chapters.length; el=0;
-    cards.forEach((c,k)=>{c.toggleAttribute('aria-current',k===i); if(k===i)c.setAttribute('aria-current','step'); c.querySelector('.fill').style.width=k<i?'100%':'0'});
-    R.n.textContent=(i+1)+' / '+chapters.length; R.cap.textContent=chapters[i].cap;
-    chapters[i].enter&&chapters[i].enter(R); chapters[i].frame(R,reduce?.7:0);
-  }
-  function setPlaying(v){playing=v; pp.innerHTML=v?PAUSE:PLAY; pp.setAttribute('aria-label',v?'일시정지':'재생')}
-  cards.forEach((c,k)=>c.addEventListener('click',()=>{enter(k); if(!reduce)setPlaying(true)}));
-  pp.addEventListener('click',()=>setPlaying(!playing));
-  new IntersectionObserver(es=>es.forEach(e=>visible=e.isIntersecting),{threshold:.3}).observe(root);
-  function loop(now){
-    const dt=now-last; last=now;
-    if(playing&&visible){
-      el+=dt; const ch=chapters[i], p=Math.min(1,el/ch.dur);
-      ch.frame(R,p); cards[i].querySelector('.fill').style.width=(p*100)+'%';
-      if(p>=1)enter(i+1);
+  /* hero: build a house through its stages */
+  var stages=[].slice.call(document.querySelectorAll('#building .stage'));
+  var chips=[].slice.call(document.querySelectorAll('#chips .chip'));
+  var pctEl=document.getElementById('pct'),fill=document.getElementById('barFill'),clock=document.getElementById('clock'),worker=document.getElementById('workerImg');
+  ['otter_axe','otter_log','otter_full'].forEach(function(n){var i=new Image();i.src='/assets/'+n+'.png'});
+  var marks=[0,20,45,70,100],pct=0,secs=0,last=-1;
+  function stageFor(p){var s=0;for(var i=0;i<marks.length;i++){if(p>=marks[i])s=i}return s}
+  function two(n){return String(n).padStart(2,'0')}
+  function render(){
+    var s=stageFor(pct);
+    if(s!==last){
+      stages.forEach(function(el,i){el.classList.toggle('on',i===s)});
+      chips.forEach(function(el,i){el.classList.toggle('on',i===s)});
+      if(last!==-1&&!reduce){stages[s].classList.remove('pop');void stages[s].offsetWidth;stages[s].classList.add('pop')}
+      last=s;
     }
-    requestAnimationFrame(loop);
+    var want=s===4?'/assets/otter_full.png':(pct%20<10?'/assets/otter_axe.png':'/assets/otter_log.png');
+    if(worker.getAttribute('src')!==want){worker.setAttribute('src',want);worker.classList.toggle('rest',s===4)}
+    pctEl.textContent=Math.floor(pct)+'%';fill.style.width=pct+'%';
+    var t=Math.round(secs);clock.textContent=two(Math.floor(t/3600))+':'+two(Math.floor(t/60)%60)+':'+two(t%60);
   }
-  setPlaying(playing); enter(0); requestAnimationFrame(loop);
-}
+  if(reduce){pct=45;secs=810;render()}
+  else{var hold=0;setInterval(function(){if(pct>=100){if(++hold>14){pct=0;hold=0}render();return}pct=Math.min(100,pct+1);secs+=18;render()},120);render()}
 
-/* rest scene: 대기 → 작업 → 졸림 → 잠듦 → 깜짝 놀람 */
-function restState(R,{sprite,mode,paused,clock,input,typing}){
-  setSprite(R.otter,sprite); R.mode.textContent=mode; R.dot.classList.toggle('pause',!!paused);
-  R.clock.textContent=hms(clock); R.inputText.textContent=input; R.input.classList.toggle('typing',!!typing);
-}
-Player($('restPlayer'),[
-  {dur:2600,cap:'공부를 시작하기 전에는 마을에서 기다려요.',enter:R=>R.cursor.hidden=true,
-   frame:(R,p)=>restState(R,{sprite:'idle',mode:'공부 전',paused:true,clock:0,input:'공부 시작을 누르면 나타나요'})},
-  {dur:3400,cap:'공부를 시작하면 수달이 바탕화면에 나와 집을 지어요. 공부 시간이 쌓여요.',
-   frame:(R,p)=>restState(R,{sprite:'work',mode:'공부 중',clock:p*1200,input:'입력 중',typing:true})},
-  {dur:3400,cap:'키보드·마우스 입력이 5분 동안 없으면 꾸벅꾸벅 졸아요. 공부 시간은 계속 쌓여요.',
-   frame:(R,p)=>restState(R,{sprite:'sleepy',mode:'졸림 · 공부 중',clock:1500+p*300,input:'입력 없음 '+ms(300+p*299)})},
-  {dur:3400,cap:'10분이 지나면 잠들어요. 이때부터 공부 시간이 멈춰요.',
-   frame:(R,p)=>restState(R,{sprite:'sleep',mode:'자동 휴식',paused:true,clock:1800,input:'입력 없음 '+ms(600+p*240)})},
-  {dur:3200,cap:'다시 손을 움직이면 깜짝 놀라 깨고, 하던 일을 이어가요.',enter:R=>R.cursor.hidden=false,
-   frame:(R,p)=>{const s=p<.4;restState(R,{sprite:s?'surprise':'work',mode:s?'깨어나는 중':'공부 중',clock:1800+Math.max(0,p-.4)*150,input:s?'입력 감지!':'입력 중',typing:!s});
-     R.cursor.hidden=p>.55; R.cursor.style.left=(28+Math.min(p,.4)/.4*30)+'%'; R.cursor.style.top=(64-Math.min(p,.4)/.4*14)+'%';}}
-]);
+  /* house stages: an otter runs along the line, filling it; each stage lights up as it passes */
+  var stagesEl=document.getElementById('stages'),runner=document.getElementById('stageRunner');
+  if(stagesEl&&!reduce&&'IntersectionObserver' in window&&window.requestAnimationFrame){
+    var stgs=[].slice.call(stagesEl.querySelectorAll('.stg')),fills=stgs.map(function(el){return el.querySelector('.track i')});
+    var tracks=stgs.map(function(el){return el.querySelector('.track')});
+    var raf=0,t0=0,played=false,DUR=8500,RUN='/assets/otter_run.png',SIT='/assets/otter_full.png';
+    new Image().src=SIT;
+    stagesEl.classList.add('anim');
+    function place(p){
+      var W=stagesEl.clientWidth,rw=runner.offsetWidth||56;
+      var top=tracks[0].offsetTop-runner.offsetHeight+4;
+      var x=Math.min(W-rw,Math.max(0,p/100*W-rw*0.6));
+      runner.style.transform='translate3d('+x+'px,'+top+'px,0)';
+      fills.forEach(function(f,i){var v=Math.max(0,Math.min(1,(p-i*20)/20));f.style.width=(v*100)+'%'});
+      stgs.forEach(function(el,i){el.classList.toggle('on',p>=i*20+(i===0?2:10))});
+    }
+    function ease(t){return -(Math.cos(Math.PI*t)-1)/2}
+    function frame(now){
+      if(!t0)t0=now;var t=Math.min(1,(now-t0)/DUR);
+      place(ease(t)*100);
+      if(t<1)raf=requestAnimationFrame(frame);
+      else{runner.src=SIT}
+    }
+    function play(){if(played)return;played=true;runner.src=RUN;t0=0;raf=requestAnimationFrame(frame)}
+    function reset(){cancelAnimationFrame(raf);played=false;runner.src=RUN;place(0)}
+    place(0);
+    addEventListener('resize',function(){if(!played)place(0)});
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&e.intersectionRatio>=.45)play();
+      else if(!e.isIntersecting)reset();
+    })},{threshold:[0,.45]}).observe(stagesEl);
+  } else if(runner){runner.style.display='none'}
 
-/* house scene: 터 다지기 → 뼈대 → 벽 → 지붕 → 완성 → 마을 */
-const PLOTS=[[20.6,55.3],[41.9,55.3],[63.3,55.3],[20.3,79.1],[41.4,79.1],[63,79.1]];
-function buildFrame(R,pct,stage){
-  R.build.hidden=false; R.village.hidden=true; R.done.hidden=pct<100;
-  const name='stage'+stage; if(R.house.dataset.s!==name){R.house.dataset.s=name;R.house.src='assets/'+name+'.webp';R.house.classList.remove('pop');void R.house.offsetWidth;R.house.classList.add('pop')}
-  R.hudBar.style.width=pct+'%'; R.hudPct.textContent=Math.round(pct)+'%';
-  R.hudClock.textContent=ms(pct*18)+' / 30:00'; R.hudLabel.textContent=pct>=100?'1번째 집 완성':'1번째 집 짓는 중';
-}
-const seg=(a,b)=>(R,p)=>buildFrame(R,a+(b-a)*p,STAGES.findIndex(s=>s[0]===a)+1);
-let shownPlots=-1;
-Player($('housePlayer'),[
-  {dur:2600,cap:'공부를 시작하면 터를 다지는 것부터 시작해요.',frame:seg(0,20)},
-  {dur:2600,cap:'공부 시간이 쌓이면 둥근 뼈대가 올라가요.',frame:seg(20,45)},
-  {dur:2600,cap:'벽을 두르고 문을 내요. 쉬는 동안에는 집 짓기도 멈춰요.',frame:seg(45,70)},
-  {dur:2600,cap:'지붕과 굴뚝을 올리면 거의 다 왔어요.',frame:seg(70,100)},
-  {dur:2400,cap:'30분을 채우면 집 한 채 완성! 남은 시간은 다음 집으로 이어져요.',frame:(R,p)=>buildFrame(R,100,5)},
-  {dur:5200,cap:'완성한 집은 마을에 하나씩 들어서고, 여섯 채가 모이면 마을이 완성돼요.',enter:()=>{shownPlots=-1},
-   frame:(R,p)=>{R.build.hidden=true; R.village.hidden=false;
-     const n=Math.min(6,1+Math.floor(p/.75*6)); R.badge.textContent='완성 '+n+' / 6'; R.vdone.hidden=p<.8;
-     if(n!==shownPlots){shownPlots=n; R.plots.innerHTML=PLOTS.slice(0,n).map(([x,y])=>`<div class="plot" style="left:${x}%;bottom:${100-y}%"><img src="assets/stage5.webp" alt=""></div>`).join('')}}}
-]);
-
-/* header border on scroll */
-const head=$('top'); addEventListener('scroll',()=>head.classList.toggle('scrolled',scrollY>8),{passive:true});
-
-/* ---------- waitlist forms (Supabase REST) ---------- */
-const CFG=window.SUDAL_CONFIG||{};
-const live=!!(CFG.supabaseUrl&&CFG.supabaseKey);
-const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-async function save(row){
-  if(!live){await new Promise(r=>setTimeout(r,500));console.info('[수달공방] 데모 모드: config.js에 Supabase 정보를 넣으면 실제로 저장돼요.',row);return 'ok'}
-  const headers={'Content-Type':'application/json','apikey':CFG.supabaseKey,'Prefer':'return=minimal'};
-  if(CFG.supabaseKey.startsWith('eyJ'))headers.Authorization='Bearer '+CFG.supabaseKey;
-  const res=await fetch(CFG.supabaseUrl.replace(/\/$/,'')+'/rest/v1/'+(CFG.table||'waitlist'),{method:'POST',headers,body:JSON.stringify(row)});
-  if(res.ok)return 'ok';
-  if(res.status===409)return 'dup';
-  throw new Error('HTTP '+res.status);
-}
-function bind(form,msgId){
-  const msg=$(msgId), btn=form.querySelector('button[type=submit]'), label=btn.textContent;
-  const email=form.querySelector('input[type=email]'), agree=form.querySelector('input[name=agree]');
-  email.addEventListener('input',()=>email.removeAttribute('aria-invalid'));
-  form.addEventListener('submit',async e=>{
-    e.preventDefault(); msg.className='msg'; msg.textContent='';
-    if(form.querySelector('input[name=website]').value)return;
-    const v=email.value.trim().toLowerCase();
-    if(!emailRe.test(v)){email.setAttribute('aria-invalid','true');msg.className='msg err';msg.textContent='이메일 주소를 다시 확인해 주세요. 예: name@example.com';email.focus();return}
-    if(!agree.checked){msg.className='msg err';msg.textContent='출시 알림을 보내려면 개인정보 수집·이용에 동의해 주세요.';agree.focus();return}
-    const os=form.querySelector('input[name=os]:checked');const beta=form.querySelector('input[name=beta]');
-    const row={email:v,os:os?os.value:null,beta:beta?beta.checked:false,source:form.dataset.source};
-    btn.disabled=true;btn.textContent='신청하는 중…';
-    try{const r=await save(row);msg.className='msg ok';
-      msg.textContent=r==='dup'?'이미 신청하신 이메일이에요. 출시하는 날 알려드릴게요.':'신청했어요! 출시하는 날 '+v+'로 알려드릴게요.'+(live?'':' (미리보기라 실제로 저장되지는 않았어요)');
-      form.reset();
-    }catch(err){msg.className='msg err';msg.textContent='신청을 저장하지 못했어요. 잠시 뒤 다시 눌러 주세요.';console.error(err)}
-    finally{btn.disabled=false;btn.textContent=label}
+  /* pause/play buttons on videos */
+  document.querySelectorAll('.vbtn').forEach(function(b){
+    var v=b.parentNode.querySelector('video');
+    function sync(){var p=v.paused;b.classList.toggle('paused',p);b.setAttribute('aria-label',p?'영상 재생':'영상 멈추기')}
+    b.addEventListener('click',function(){if(v.paused)v.play();else v.pause();});
+    v.addEventListener('play',sync);v.addEventListener('pause',sync);
+    if(reduce){v.pause();v.removeAttribute('autoplay')}
+    sync();
   });
-}
-bind($('heroForm'),'heroMsg'); bind($('joinForm'),'joinMsg');
+
+  /* consent "자세히 보기" toggles */
+  var tpl=document.getElementById('policyTpl');
+  document.querySelectorAll('.consent-field').forEach(function(f){
+    var b=f.querySelector('.more'),box=null;
+    b.addEventListener('click',function(e){
+      e.preventDefault();
+      if(box){box.remove();box=null;b.setAttribute('aria-expanded','false');b.textContent='자세히 보기';return}
+      box=tpl.content.firstElementChild.cloneNode(true);f.appendChild(box);b.setAttribute('aria-expanded','true');b.textContent='접기';
+    });
+  });
+
+  function post(body){
+    return fetch('/api/survey',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'저장하지 못했어요');return j})});
+  }
+  function emailOk(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
+  function doneCard(title,text){
+    var d=document.createElement('div');d.className='done';d.setAttribute('tabindex','-1');
+    d.innerHTML='<img src="/assets/otter_smile.png" alt=""><div><b></b><span></span></div>';
+    d.querySelector('b').textContent=title;d.querySelector('span').textContent=text;return d;
+  }
+
+  /* signup forms (hero + launch) */
+  document.querySelectorAll('form.signup').forEach(function(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var msg=form.querySelector('.form-msg');msg.textContent='';
+      var email=form.email.value.trim(),consent=form.consent.checked;
+      var ef=form.email.closest('.field'),cf=form.querySelector('.consent-field');
+      ef.classList.toggle('invalid',!emailOk(email));cf.classList.toggle('invalid',!consent);
+      if(!emailOk(email)){form.email.focus();return}
+      if(!consent){form.consent.focus();return}
+      var os=[].slice.call(form.querySelectorAll('input[name=os]:checked')).map(function(i){return i.value});
+      var btn=form.querySelector('button[type=submit]'),label=btn.textContent;
+      btn.disabled=true;btn.textContent='신청하는 중…';
+      post({kind:'signup',email:email,os:os,beta:!!(form.beta&&form.beta.checked),consent:true,ref:ref,from:form.dataset.form,website:form.website.value})
+        .then(function(){
+          var card=doneCard('신청됐어요','출시하는 날 '+email+'로 알려드릴게요.');
+          form.replaceWith(card);card.focus({preventScroll:true});
+          try{localStorage.setItem('sudal_signed','1')}catch(_){}
+        })
+        .catch(function(err){msg.textContent=err.message||'신청하지 못했어요. 잠시 후 다시 시도해 주세요.';btn.disabled=false;btn.textContent=label});
+    });
+    form.addEventListener('input',function(e){var f=e.target.closest('.field');if(f)f.classList.remove('invalid')});
+  });
+
+  /* collapsible feedback */
+  var Q=window.SURVEY,box=document.getElementById('questions');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  Q.forEach(function(q){
+    var d=document.createElement('div');d.className='q';d.dataset.q=q.id;
+    var h='<div class="qt" id="qt-'+q.id+'">'+esc(q.title)+(q.hint?'<small>'+esc(q.hint)+'</small>':'')+'</div>';
+    if(q.type==='scale'){
+      h+='<div class="scale" role="radiogroup" aria-labelledby="qt-'+q.id+'">';
+      for(var i=1;i<=5;i++)h+='<label class="opt"><input type="radio" name="'+q.id+'" value="'+i+'" aria-label="'+i+'점"><span>'+i+'</span></label>';
+      h+='</div><div class="scale-labels"><span>'+esc(q.min)+'</span><span>'+esc(q.max)+'</span></div>';
+    }else if(q.type==='text'){
+      h+='<textarea name="'+q.id+'" maxlength="1000" aria-labelledby="qt-'+q.id+'" placeholder="'+esc(q.placeholder||'')+'"></textarea>';
+    }else{
+      h+='<div class="opts" role="group" aria-labelledby="qt-'+q.id+'">';
+      q.options.forEach(function(o){h+='<label class="opt"><input type="'+(q.type==='single'?'radio':'checkbox')+'" name="'+q.id+'" value="'+esc(o)+'"><span>'+esc(o)+'</span></label>'});
+      h+='</div>';
+    }
+    d.innerHTML=h;box.appendChild(d);
+  });
+  var fb=document.getElementById('fbForm');
+  fb.addEventListener('change',function(e){
+    var wrap=e.target.closest('.q');if(!wrap)return;
+    var q=Q.filter(function(x){return x.id===wrap.dataset.q})[0];
+    if(q.max){var n=wrap.querySelectorAll('input:checked').length;wrap.querySelectorAll('input[type=checkbox]').forEach(function(b){b.disabled=!b.checked&&n>=q.max})}
+  });
+  fb.addEventListener('submit',function(e){
+    e.preventDefault();
+    var msg=fb.querySelector('.form-msg');msg.textContent='';
+    var answers={},any=false;
+    Q.forEach(function(q){
+      var v;
+      if(q.type==='multi')v=[].slice.call(fb.querySelectorAll('input[name="'+q.id+'"]:checked')).map(function(i){return i.value});
+      else if(q.type==='text')v=fb.querySelector('[name="'+q.id+'"]').value.trim();
+      else{var c=fb.querySelector('input[name="'+q.id+'"]:checked');v=c?(q.type==='scale'?Number(c.value):c.value):null}
+      answers[q.id]=v;if(Array.isArray(v)?v.length:v)any=true;
+    });
+    if(!any){msg.textContent='하나 이상 답해 주시면 보낼 수 있어요.';return}
+    var btn=fb.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='보내는 중…';
+    post({kind:'feedback',answers:answers,ref:ref,website:fb.website.value})
+      .then(function(){var c=doneCard('의견 고마워요','다음 기능 순서를 정할 때 꼭 참고할게요.');fb.replaceWith(c);c.focus({preventScroll:true})})
+      .catch(function(err){msg.textContent=err.message||'보내지 못했어요. 잠시 후 다시 시도해 주세요.';btn.disabled=false;btn.textContent='의견 보내기'});
+  });
 })();
 </script>
-
 </body>
 </html>

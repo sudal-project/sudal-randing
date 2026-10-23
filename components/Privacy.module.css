@@ -1,0 +1,59 @@
+.privacy {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 22px;
+  padding: 40px clamp(22px, 4vw, 48px);
+}
+
+.privacy > img {
+  width: 160px;
+}
+
+.h2 {
+  margin-bottom: 4px;
+}
+
+.privacy ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  gap: 14px;
+}
+
+.privacy li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.privacy li svg {
+  margin-top: 3px;
+  color: var(--leaf);
+}
+
+.privacy li b {
+  display: block;
+}
+
+.privacy li span {
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+@media (max-width: 860px) {
+  .privacy {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .privacy > img {
+    width: 110px;
+  }
+}

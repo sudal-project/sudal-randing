@@ -1,0 +1,71 @@
+.flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 48px;
+  position: relative;
+}
+
+.flow::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 78px;
+  border-top: 3px dashed var(--line);
+}
+
+.state {
+  text-align: center;
+  padding: 0 10px;
+  position: relative;
+}
+
+.pic {
+  height: 156px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pic img {
+  max-height: 116px;
+  width: auto;
+  background: var(--paper);
+  padding: 0 8px;
+}
+
+.state h3 {
+  font-family: var(--round);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 10px 0 2px;
+}
+
+.when {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--river-deep);
+  background: var(--river-soft);
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-bottom: 8px;
+}
+
+.state p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .flow {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+
+  .flow::before {
+    display: none;
+  }
+}

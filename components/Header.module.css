@@ -1,18 +1,31 @@
 .top {
   position: sticky;
-  top: env(safe-area-inset-top, 0px);
+  top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--sand) 88%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  background: var(--paper-glass);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--line);
+  /* 스크롤하면 그림자: 스크립트 없이 스크롤 위치에 묶는다 */
+  animation: scrolled linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 9px;
+}
+
+@keyframes scrolled {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 6px 16px -10px var(--shadow);
+  }
 }
 
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding-block: 12px;
+  height: 64px;
 }
 
 .brand {
@@ -20,55 +33,24 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  color: var(--ink);
+  font-family: var(--round);
+  font-size: 22px;
 }
 
 .brand img {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
-
-.brand b {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: 21px;
-}
-
-.brand small {
-  color: var(--ink-soft);
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  width: 36px;
+  height: 36px;
 }
 
 .cta {
-  appearance: none;
-  border: 0;
-  border-radius: 10px;
-  background: var(--accent);
-  color: var(--paper);
-  font: 700 14px/1 var(--font-body);
-  padding: 10px 14px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, #000);
-  transition: filter 0.08s, transform 0.08s, box-shadow 0.08s;
-}
-
-.cta:hover {
-  filter: brightness(1.05);
-}
-
-.cta:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 60%, #000);
+  padding: 9px 16px;
+  font-size: 15px;
 }
 
 @media (max-width: 520px) {
-  .brand small {
-    display: none;
+  .cta {
+    padding: 8px 12px;
+    font-size: 14px;
   }
 }

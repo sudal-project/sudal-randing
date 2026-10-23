@@ -1,16 +1,28 @@
-import RestScene from "@/components/scenes/RestScene";
-import { otterStatesSection } from "@/lib/content";
+import { states } from "@/lib/content";
+import Lines from "./Lines";
+import shared from "./shared.module.css";
+import styles from "./States.module.css";
 
 export default function States() {
   return (
-    <section id="states">
+    <section className={`${shared.block} ${shared.paperBg}`}>
       <div className="wrap">
-        <div className="secHead">
-          <p className="eyebrow">{otterStatesSection.eyebrow}</p>
-          <h2 style={{ whiteSpace: "pre-line" }}>{otterStatesSection.heading}</h2>
-          <p>{otterStatesSection.lead}</p>
+        <h2 className={shared.h2}>
+          <Lines lines={states.heading} />
+        </h2>
+        <p className={shared.lead}>{states.lead}</p>
+        <div className={styles.flow}>
+          {states.items.map((item) => (
+            <div className={styles.state} key={item.title}>
+              <div className={styles.pic}>
+                <img src={item.image} alt={item.alt} />
+              </div>
+              <h3>{item.title}</h3>
+              <span className={styles.when}>{item.when}</span>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
-        <RestScene />
       </div>
     </section>
   );
