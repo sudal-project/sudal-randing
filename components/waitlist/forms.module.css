@@ -274,13 +274,6 @@
   }
 }
 
-/* 첫 화면 "아래로 가기" 버튼 아래 안내 (시안 2) */
-.jumpNote {
-  margin: 8px 0 0;
-  font-size: 14px;
-  color: var(--ink-soft);
-}
-
 /* hero 폼 "다음" 버튼 위의 수달 */
 .nextWrap {
   position: relative;

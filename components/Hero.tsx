@@ -1,5 +1,5 @@
 import BuildScene from "@/components/scenes/BuildScene";
-import HeroSignupPreview from "@/components/waitlist/HeroSignupPreview";
+import SignupForm from "@/components/waitlist/SignupForm";
 import { downloadSection, hero } from "@/lib/content";
 import { getDownloadUrl, isReleased } from "@/lib/release";
 import shared from "./shared.module.css";
@@ -29,7 +29,7 @@ export default function Hero() {
               {downloadSection.ctaLabel}
             </a>
           ) : (
-            <HeroSignupPreview />
+            <SignupForm variant="hero" />
           )}
           <ul className={styles.promise}>
             {(released ? hero.promiseReleased : hero.promise).map((line) => (
