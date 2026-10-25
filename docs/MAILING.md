@@ -22,7 +22,7 @@
 | email | 소문자로 저장. lower(email) 고유 |
 | os | 'windows' / 'macos' / null |
 | beta | 출시 전 테스트 참여 의향 |
-| source | 'hero'(첫 화면 폼) / 'footer'(아래 신청 상자 Launch) |
+| source | 'footer'(아래 신청 상자 Launch). 'hero'는 예전 첫 화면 폼 값으로, 지금은 들어오지 않음 |
 | created_at | 신청 시각 |
 | sent_at | 출시 메일 보낸 시각. null이면 아직 안 보냄 |
 | unsubscribe_token | 수신 거부 링크용 uuid. 자동 생성 |
