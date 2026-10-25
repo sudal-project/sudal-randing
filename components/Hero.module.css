@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 48px;
-  align-items: end;
+  align-items: start;
 }
 
 .tag {

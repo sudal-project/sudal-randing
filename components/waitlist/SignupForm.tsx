@@ -19,8 +19,10 @@ type Done = "ok" | "duplicate" | null;
 
 export default function SignupForm({ variant }: Props) {
   const full = variant === "launch";
+  // hero는 이메일만 먼저 받고, "다음"을 누르면 그 자리에서 나머지 항목을 펼친다
+  const [open, setOpen] = useState(full);
   const [email, setEmail] = useState("");
-  const [os, setOs] = useState<string[]>([]);
+  const [os, setOs] = useState("");
   const [beta, setBeta] = useState(false);
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState("");
@@ -38,22 +40,25 @@ export default function SignupForm({ variant }: Props) {
     const trimmed = email.trim();
     const emailOk = EMAIL_RE.test(trimmed);
     setEmailInvalid(!emailOk);
-    setConsentInvalid(!consent);
     if (!emailOk) {
       form.querySelector<HTMLInputElement>("input[name=email]")?.focus();
       return;
     }
+    if (!open) {
+      setOpen(true);
+      return;
+    }
+    setConsentInvalid(!consent);
     if (!consent) {
       form.querySelector<HTMLInputElement>("input[name=consent]")?.focus();
       return;
     }
 
-    // 저장 형식은 기존 joinWaitlist 그대로: OS는 하나만 고른 경우에만 보낸다
     const data = new FormData();
     data.set("email", trimmed);
     data.set("source", full ? "footer" : "hero");
     data.set("agree", "on");
-    if (os.length === 1) data.set("os", os[0]);
+    if (os) data.set("os", os);
     if (beta) data.set("beta", "on");
     if (website) data.set("website", website);
 
@@ -74,9 +79,9 @@ export default function SignupForm({ variant }: Props) {
   if (done === "duplicate") return <DoneCard title={signupForm.duplicateTitle} text={signupForm.duplicateText} />;
 
   const emailId = `${variant}Email`;
-  const cta = full ? signupForm.launchCta : signupForm.heroCta;
+  const cta = open ? signupForm.launchCta : signupForm.heroNext;
   const submit = (
-    <button className={`${shared.btnGo} ${full ? styles.submit : ""}`} type="submit" disabled={pending}>
+    <button className={`${shared.btnGo} ${open ? styles.submit : ""}`} type="submit" disabled={pending}>
       {pending ? signupForm.pendingCta : cta}
     </button>
   );
@@ -102,28 +107,33 @@ export default function SignupForm({ variant }: Props) {
               setEmailInvalid(false);
             }}
           />
-          {!full && submit}
+          {!open && (
+            <span className={styles.nextWrap}>
+              {/* 다음 버튼 위로 고개를 내미는 수달 */}
+              <img className={styles.nextOtter} src={signupForm.nextImage} alt="" />
+              {submit}
+            </span>
+          )}
         </div>
         <div className={styles.err}>{signupForm.invalidEmail}</div>
       </div>
 
-      {full && (
-        <>
+      {open && (
+        <div className={full ? undefined : styles.reveal}>
           <div className={styles.field}>
-            <span className={styles.lbl} id="osLbl">
+            <span className={styles.lbl} id={`${variant}OsLbl`}>
               {signupForm.osLabel}
             </span>
-            <div className={styles.opts} role="group" aria-labelledby="osLbl">
+            <div className={styles.opts} role="group" aria-labelledby={`${variant}OsLbl`}>
               {signupForm.osOptions.map((opt) => (
                 <label className={styles.opt} key={opt.value}>
                   <input
                     type="checkbox"
                     name="os"
                     value={opt.value}
-                    checked={os.includes(opt.value)}
-                    onChange={(e) =>
-                      setOs((cur) => (e.target.checked ? [...cur, opt.value] : cur.filter((v) => v !== opt.value)))
-                    }
+                    checked={os === opt.value}
+                    // 하나만 고른다. 고른 걸 다시 누르면 선택을 지운다
+                    onChange={(e) => setOs(e.target.checked ? opt.value : "")}
                   />
                   <span>{opt.label}</span>
                 </label>
@@ -136,10 +146,10 @@ export default function SignupForm({ variant }: Props) {
               {signupForm.betaLabel} <span className={styles.fine}>{signupForm.betaFine}</span>
             </label>
           </div>
-        </>
+        </div>
       )}
 
-      <div className={`${styles.field} ${full ? "" : styles.last} ${consentInvalid ? styles.invalid : ""}`}>
+      <div className={`${styles.field} ${open ? "" : styles.last} ${consentInvalid ? styles.invalid : ""}`} hidden={!open}>
         <label className={styles.consent}>
           <input
             type="checkbox"
@@ -189,7 +199,7 @@ export default function SignupForm({ variant }: Props) {
         </label>
       </div>
 
-      {full && submit}
+      {open && submit}
       <div className={styles.msg} role="alert">
         {message}
       </div>

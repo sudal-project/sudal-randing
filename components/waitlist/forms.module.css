@@ -254,3 +254,47 @@
     width: 100%;
   }
 }
+
+/* hero 폼에서 "다음"을 누르면 나머지 항목이 펼쳐진다 */
+.reveal {
+  margin-top: 4px;
+  animation: reveal 0.35s ease-out;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+}
+
+/* hero 폼 "다음" 버튼 위의 수달 */
+.nextWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.nextWrap button {
+  position: relative;
+  width: 100%;
+}
+
+.nextOtter {
+  position: absolute;
+  right: 10px;
+  bottom: calc(100% - 8px);
+  width: 44px;
+  pointer-events: none;
+}
+
+@media (max-width: 520px) {
+  .nextWrap {
+    display: flex;
+  }
+}
