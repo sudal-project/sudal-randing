@@ -6,11 +6,11 @@ export const brand = {
 
 export const meta = {
   siteUrl: "https://chungs.store",
-  title: "수달공방 — 공부 시간은 집으로, 완성한 집은 나만의 마을로",
+  title: "수달공방 - 공부 시간은 집으로, 완성한 집은 나만의 마을로",
   description:
     "공부를 시작하면 바탕화면 한쪽에서 수달이 같이 일해요. 공부한 시간만큼 수달이 집을 짓고, 집이 모이면 마을이 돼요. Windows·macOS 데스크톱 공부 타이머, 출시 준비 중.",
   ogDescription: "바탕화면에서 같이 일하는 수달과 공부하는 데스크톱 앱. 출시 알림을 신청해 주세요.",
-  ogImage: "/assets/og.jpg?v=10231120",
+  ogImage: "/assets/og.jpg?v=10261300",
   themeColor: "#fbe9d6",
   themeColorDark: "#1d1712",
 };
