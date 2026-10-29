@@ -18,7 +18,7 @@ export const meta = {
 export const header = {
   ctaLabel: "출시 알림 받기",
   ctaLabelReleased: "다운로드",
-  ctaHref: "#launch",
+  ctaHref: "#signup",
 };
 
 export const hero = {
@@ -207,7 +207,6 @@ export const downloadSection = {
 
 export const signupForm = {
   emailLabel: "이메일",
-  heroPlaceholder: "이메일 주소",
   launchPlaceholder: "you@example.com",
   osLabel: "사용하는 OS",
   osOptions: [
@@ -219,8 +218,6 @@ export const signupForm = {
   consentLabel: "(필수) 개인정보 수집·이용에 동의합니다",
   more: "자세히 보기",
   less: "접기",
-  heroNext: "다음 →",
-  nextImage: "/assets/otter_peek.png",
   launchCta: "출시 알림 신청하기",
   pendingCta: "신청하는 중…",
   invalidEmail: "이메일 주소를 확인해 주세요.",
