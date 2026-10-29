@@ -165,6 +165,8 @@ body:has(.landing) {
   --board-shine: rgba(255, 255, 255, 0.12);
   --error: #b23c17;
   --error-line: #d0613a;
+  /* 기능 문구의 형광펜 */
+  --mark: rgba(241, 196, 141, 0.7);
   --paper-edge: #f3dfc2;
   --stripe-a: #f6e7d0;
   --stripe-b: #efdcc0;
@@ -236,6 +238,8 @@ body:has(.landing) {
     --board-shine: rgba(255, 255, 255, 0.06);
     --error: #f39a7c;
     --error-line: #e07a5a;
+    /* 기능 문구의 형광펜 */
+    --mark: rgba(224, 135, 77, 0.32);
     --paper-edge: #3d3128;
     --stripe-a: #2e241c;
     --stripe-b: #3a2e24;

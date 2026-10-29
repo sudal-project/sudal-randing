@@ -28,7 +28,9 @@ export default function BuildScene() {
   const [{ pct, secs }, setBuild] = useState({ pct: 0, secs: 0, hold: 0 });
   const [reduce, setReduce] = useState(false);
   const [pop, setPop] = useState(0);
+  const [visible, setVisible] = useState(false);
   const lastStage = useRef(0);
+  const sceneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     [otter.axe, otter.log, otter.rest].forEach((src) => {
@@ -42,17 +44,25 @@ export default function BuildScene() {
       return;
     }
 
-    // 다 지으면 잠깐 멈췄다가 처음부터 다시 짓는다
+    // 화면에 보일 때만 짓는다
+    const io = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    if (sceneRef.current) io.observe(sceneRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible || reduce) return;
+    // 다 지으면 잠깐 멈췄다가 타이머와 함께 처음부터 다시 짓는다 (집 한 채 = 30분)
     const id = setInterval(() => {
       setBuild((b) => {
         if (b.pct >= 100) {
-          return b.hold >= 14 ? { ...b, pct: 0, hold: 0 } : { ...b, hold: b.hold + 1 };
+          return b.hold >= 14 ? { pct: 0, secs: 0, hold: 0 } : { ...b, hold: b.hold + 1 };
         }
         return { pct: Math.min(100, b.pct + 1), secs: b.secs + 18, hold: 0 };
       });
     }, 120);
     return () => clearInterval(id);
-  }, []);
+  }, [visible, reduce]);
 
   const stage = stageFor(pct);
 
@@ -69,7 +79,7 @@ export default function BuildScene() {
 
   return (
     <>
-      <div className={styles.scene} role="img" aria-label={buildScene.ariaLabel}>
+      <div ref={sceneRef} className={styles.scene} role="img" aria-label={buildScene.ariaLabel}>
         <div className={styles.plot} style={{ left: "22.9%", top: "52.5%" }}>
           <img src={buildScene.doneHouse} alt="" />
         </div>

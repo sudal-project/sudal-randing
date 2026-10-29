@@ -66,3 +66,12 @@
     padding: 76px 0;
   }
 }
+
+/* 형광펜: 글자 아래쪽 절반만 칠한다 */
+.mark {
+  background: linear-gradient(transparent 55%, var(--mark) 55%);
+  color: inherit;
+  padding: 0 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}

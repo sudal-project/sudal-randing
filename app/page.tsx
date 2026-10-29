@@ -5,8 +5,6 @@ import Hero from "@/components/Hero";
 import Launch from "@/components/Launch";
 import Privacy from "@/components/Privacy";
 import Roadmap from "@/components/Roadmap";
-import Stages from "@/components/Stages";
-import States from "@/components/States";
 import Together from "@/components/Together";
 import Village from "@/components/Village";
 import { meta } from "@/lib/content";
@@ -41,8 +39,6 @@ export default function Home() {
       <main>
         <Hero />
         <Together />
-        <States />
-        <Stages />
         <Village />
         <Privacy />
         <Roadmap />

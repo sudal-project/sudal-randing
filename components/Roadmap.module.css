@@ -1,9 +1,21 @@
+/* 다른 섹션보다 위아래 여백을 조금 줄인다 */
+/* shared.block보다 앞서도록 태그를 붙여 우선순위를 올린다 */
+section.section {
+  padding: 84px 0;
+}
+
+@media (max-width: 860px) {
+  section.section {
+    padding: 64px 0;
+  }
+}
+
 .road {
   position: relative;
-  margin-top: 52px;
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .road::before {
@@ -11,8 +23,8 @@
   position: absolute;
   left: 4%;
   right: 4%;
-  top: 118px;
-  height: 14px;
+  top: 80px;
+  height: 12px;
   border-radius: 7px;
   background: repeating-linear-gradient(90deg, var(--road-a) 0 18px, var(--road-b) 18px 36px);
 }
@@ -24,7 +36,7 @@
 }
 
 .pic {
-  height: 126px;
+  height: 88px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -33,16 +45,16 @@
 }
 
 .pic > img {
-  max-height: 118px;
+  max-height: 82px;
   width: auto;
 }
 
 .card {
-  margin-top: 22px;
+  margin-top: 16px;
   background: var(--paper);
   border: 2px solid var(--line);
-  border-radius: 14px;
-  padding: 16px 16px 18px;
+  border-radius: 12px;
+  padding: 12px 14px 14px;
   flex: 1;
 }
 
@@ -74,25 +86,26 @@
 .card h3 {
   font-family: var(--round);
   font-weight: 400;
-  font-size: 21px;
-  margin: 2px 0 10px;
+  font-size: 18px;
+  margin: 2px 0 6px;
   color: var(--heading);
 }
 
 .card ul {
   margin: 0;
-  padding: 0 0 0 18px;
-  font-size: 15px;
+  padding: 0 0 0 16px;
+  font-size: 13.5px;
   color: var(--ink-soft);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .card li + li {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
-/* 앞으로 나올 버전: 그림자 모양 */
+/* 앞으로 나올 버전: 그림자 모양 (데스크톱에서는 70%로 줄여 그린다) */
 .future {
+  zoom: 0.7;
   position: relative;
   width: 150px;
   height: 118px;
@@ -187,14 +200,14 @@
 .runner {
   position: absolute;
   left: 15.6%;
-  top: 78px;
-  width: 62px;
+  top: 50px;
+  width: 44px;
   z-index: 2;
   pointer-events: none;
 }
 
 .note {
-  margin-top: 26px;
+  margin-top: 18px;
   font-size: 15px;
   color: var(--ink-soft);
 }
