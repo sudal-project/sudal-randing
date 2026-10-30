@@ -10,18 +10,17 @@ import styles from "./forms.module.css";
 // 서버(lib/validation.ts)와 같은 규칙: 끝부분은 두 글자 이상
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+export type Done = "ok" | "duplicate";
+
 type Props = {
-  /** hero: 첫 화면 한 줄 폼, launch: 아래 신청 상자의 전체 폼 */
-  variant: "hero" | "launch";
+  /** 첫 화면에서 먼저 받은 이메일 */
+  defaultEmail?: string;
+  onDone?: (done: Done, email: string) => void;
 };
 
-type Done = "ok" | "duplicate" | null;
-
-export default function SignupForm({ variant }: Props) {
-  const full = variant === "launch";
-  // hero는 이메일만 먼저 받고, "다음"을 누르면 그 자리에서 나머지 항목을 펼친다
-  const [open, setOpen] = useState(full);
-  const [email, setEmail] = useState("");
+/** 신청 모달 안의 전체 폼 (이메일, OS, 테스트 참여, 동의) */
+export default function SignupForm({ defaultEmail = "", onDone }: Props) {
+  const [email, setEmail] = useState(defaultEmail);
   const [os, setOs] = useState("");
   const [beta, setBeta] = useState(false);
   const [consent, setConsent] = useState(false);
@@ -30,7 +29,7 @@ export default function SignupForm({ variant }: Props) {
   const [consentInvalid, setConsentInvalid] = useState(false);
   const [showPolicy, setShowPolicy] = useState(false);
   const [message, setMessage] = useState("");
-  const [done, setDone] = useState<Done>(null);
+  const [done, setDone] = useState<Done | null>(null);
   const [pending, startTransition] = useTransition();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -44,10 +43,6 @@ export default function SignupForm({ variant }: Props) {
       form.querySelector<HTMLInputElement>("input[name=email]")?.focus();
       return;
     }
-    if (!open) {
-      setOpen(true);
-      return;
-    }
     setConsentInvalid(!consent);
     if (!consent) {
       form.querySelector<HTMLInputElement>("input[name=consent]")?.focus();
@@ -56,7 +51,7 @@ export default function SignupForm({ variant }: Props) {
 
     const data = new FormData();
     data.set("email", trimmed);
-    data.set("source", full ? "footer" : "hero");
+    data.set("source", "hero");
     data.set("agree", "on");
     if (os) data.set("os", os);
     if (beta) data.set("beta", "on");
@@ -68,7 +63,9 @@ export default function SignupForm({ variant }: Props) {
         setMessage(signupForm.error);
         return;
       }
-      setDone(result.status === "duplicate" ? "duplicate" : "ok");
+      const next = result.status === "duplicate" ? "duplicate" : "ok";
+      setDone(next);
+      onDone?.(next, trimmed);
       try {
         localStorage.setItem("sudal_signed", "1");
       } catch {}
@@ -78,78 +75,55 @@ export default function SignupForm({ variant }: Props) {
   if (done === "ok") return <DoneCard title={signupForm.doneTitle} text={signupForm.doneText(email.trim())} />;
   if (done === "duplicate") return <DoneCard title={signupForm.duplicateTitle} text={signupForm.duplicateText} />;
 
-  const emailId = `${variant}Email`;
-  const cta = open ? signupForm.launchCta : signupForm.heroNext;
-  const submit = (
-    <button className={`${shared.btnGo} ${open ? styles.submit : ""}`} type="submit" disabled={pending}>
-      {pending ? signupForm.pendingCta : cta}
-    </button>
-  );
-
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className={`${styles.field} ${emailInvalid ? styles.invalid : ""}`}>
-        <label className={full ? undefined : styles.sr} htmlFor={emailId}>
-          {signupForm.emailLabel}
-        </label>
-        <div className={full ? undefined : styles.inline}>
-          <input
-            type="email"
-            id={emailId}
-            name="email"
-            placeholder={full ? signupForm.launchPlaceholder : signupForm.heroPlaceholder}
-            autoComplete="email"
-            required
-            value={email}
-            aria-invalid={emailInvalid || undefined}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setEmailInvalid(false);
-            }}
-          />
-          {!open && (
-            <span className={styles.nextWrap}>
-              {/* 다음 버튼 위로 고개를 내미는 수달 */}
-              <img className={styles.nextOtter} src={signupForm.nextImage} alt="" />
-              {submit}
-            </span>
-          )}
-        </div>
+        <label htmlFor="signupEmail">{signupForm.emailLabel}</label>
+        <input
+          type="email"
+          id="signupEmail"
+          name="email"
+          placeholder={signupForm.launchPlaceholder}
+          autoComplete="email"
+          required
+          value={email}
+          aria-invalid={emailInvalid || undefined}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setEmailInvalid(false);
+          }}
+        />
         <div className={styles.err}>{signupForm.invalidEmail}</div>
       </div>
 
-      {open && (
-        <div className={full ? undefined : styles.reveal}>
-          <div className={styles.field}>
-            <span className={styles.lbl} id={`${variant}OsLbl`}>
-              {signupForm.osLabel}
-            </span>
-            <div className={styles.opts} role="group" aria-labelledby={`${variant}OsLbl`}>
-              {signupForm.osOptions.map((opt) => (
-                <label className={styles.opt} key={opt.value}>
-                  <input
-                    type="checkbox"
-                    name="os"
-                    value={opt.value}
-                    checked={os === opt.value}
-                    // 하나만 고른다. 고른 걸 다시 누르면 선택을 지운다
-                    onChange={(e) => setOs(e.target.checked ? opt.value : "")}
-                  />
-                  <span>{opt.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-          <div className={styles.field}>
-            <label className={styles.check}>
-              <input type="checkbox" name="beta" checked={beta} onChange={(e) => setBeta(e.target.checked)} />{" "}
-              {signupForm.betaLabel} <span className={styles.fine}>{signupForm.betaFine}</span>
+      <div className={styles.field}>
+        <span className={styles.lbl} id="signupOsLbl">
+          {signupForm.osLabel}
+        </span>
+        <div className={styles.opts} role="group" aria-labelledby="signupOsLbl">
+          {signupForm.osOptions.map((opt) => (
+            <label className={styles.opt} key={opt.value}>
+              <input
+                type="checkbox"
+                name="os"
+                value={opt.value}
+                checked={os === opt.value}
+                // 하나만 고른다. 고른 걸 다시 누르면 선택을 지운다
+                onChange={(e) => setOs(e.target.checked ? opt.value : "")}
+              />
+              <span>{opt.label}</span>
             </label>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
+      <div className={styles.field}>
+        <label className={styles.check}>
+          <input type="checkbox" name="beta" checked={beta} onChange={(e) => setBeta(e.target.checked)} />{" "}
+          {signupForm.betaLabel} <span className={styles.fine}>{signupForm.betaFine}</span>
+        </label>
+      </div>
 
-      <div className={`${styles.field} ${open ? "" : styles.last} ${consentInvalid ? styles.invalid : ""}`} hidden={!open}>
+      <div className={`${styles.field} ${consentInvalid ? styles.invalid : ""}`}>
         <label className={styles.consent}>
           <input
             type="checkbox"
@@ -199,7 +173,9 @@ export default function SignupForm({ variant }: Props) {
         </label>
       </div>
 
-      {open && submit}
+      <button className={`${shared.btnGo} ${styles.submit}`} type="submit" disabled={pending}>
+        {pending ? signupForm.pendingCta : signupForm.launchCta}
+      </button>
       <div className={styles.msg} role="alert">
         {message}
       </div>

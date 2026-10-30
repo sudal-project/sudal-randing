@@ -11,13 +11,13 @@ Claude Code에게: 위에서부터 한 단계씩 진행한다. 단계를 마치�
 ## 2. 섹션 옮기기 (시안 기준)
 - [x] `lib/content.ts`: 모든 화면 문구
 - [x] Header, Footer
-- [x] Together(바탕화면 수달 영상), States(상태 4개), Village(마을 영상·기록 캡처)
+- [x] Together(바탕화면 수달 영상), States(상태 4개 → Together 아래 카드 한 줄로 합침), Village(마을 영상·기록 캡처)
 - [x] Privacy, Roadmap(V1~V5, 앞 버전은 실루엣)
 - [x] 900px · 860px · 520px 반응형, 다크 모드
 
 ## 3. 움직이는 장면
 - [x] `BuildScene.tsx`: 첫 화면 마을에서 수달이 집을 단계별로 짓고, 보드에 진행도·공부 시간 → Hero 조립
-- [x] `StageTrack.tsx`: 화면에 보이면 수달이 달리며 집 5단계를 채움 (Stages 섹션)
+- [x] `StageTrack.tsx`: 화면에 보이면 수달이 달리며 집 5단계를 채움 (Stages 섹션 → 첫 화면 BuildScene과 겹쳐 뺌)
 - [x] `LoopVideo.tsx`: 반복 영상 + 멈춤/재생 버튼 (Together, Village)
 - [x] `prefers-reduced-motion`이면 모두 정지
 - [ ] 브라우저로 시안과 나란히 비교 (데스크톱, 390px 휴대폰, 다크 모드, macOS Safari)

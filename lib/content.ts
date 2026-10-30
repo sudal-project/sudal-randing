@@ -18,7 +18,7 @@ export const meta = {
 export const header = {
   ctaLabel: "출시 알림 받기",
   ctaLabelReleased: "다운로드",
-  ctaHref: "#launch",
+  ctaHref: "#signup",
 };
 
 export const hero = {
@@ -55,9 +55,10 @@ export const together = {
   heading: ["말 걸지 않고,", "옆에만 있어 줘요"],
   lead: "친구랑 같이 공부하면 집중이 잘 되는 건 대화 때문이 아니라 누군가 옆에서 같이 하고 있어서예요. 수달공방은 그 자리를 수달이 채워요.",
   facts: [
-    "공부 시작을 누르면 수달이 바탕화면 한쪽에 나와 나무를 나르고 망치질을 해요.",
-    "인강, 유튜브, 코딩처럼 화면을 보며 공부해도 다른 창을 가리지 않아요.",
-    "수달 크기와 처음 나올 자리는 설정에서 고르고, 더블클릭하면 작게 접혀요.",
+    // ==…== 안은 형광펜으로 칠한다
+    "공부 시작을 누르면 수달이 ==바탕화면 한쪽에 나와== 나무를 나르고 망치질을 해요.",
+    "인강, 유튜브, 코딩처럼 화면을 보며 공부해도 ==다른 창을 가리지 않아요.==",
+    "==수달 크기와 처음 나올 자리==는 설정에서 고르고, ==더블클릭하면 작게 접혀요.==",
   ],
   video: {
     title: "바탕화면",
@@ -69,7 +70,7 @@ export const together = {
 
 export const states = {
   heading: ["타이머를 안 눌러도", "수달이 알아서 알아채요"],
-  lead: "키보드와 마우스를 쓰는지로 공부 중인지 판단해요. 자리를 비우면 감시하는 대신 수달이 꾸벅꾸벅 졸다가 잠들어요.",
+  lead: "==키보드와 마우스를 쓰는지로== 공부 중인지 판단해요. 자리를 비우면 감시하는 대신 수달이 꾸벅꾸벅 졸다가 잠들어요.",
   items: [
     {
       image: "/assets/otter_axe.png",
@@ -102,36 +103,17 @@ export const states = {
   ],
 };
 
-export const stages = {
-  heading: "30분 공부하면 집 한 채",
-  lead: "목표를 정할 필요가 없어요. 공부한 만큼 집이 한 단계씩 올라가고, 남은 시간은 다음 집으로 넘어가요.",
-  note: "지붕 색은 집마다 빨강, 초록으로 달라져요. 집 한 채에 걸리는 시간은 설정에서 바꿀 수 있어요.",
-  runner: { run: "/assets/otter_run.png", sit: "/assets/otter_full.png" },
-  items: [
-    { image: "/assets/house_0.png", name: "터 다지기", pct: "0%" },
-    { image: "/assets/house_1.png", name: "뼈대", pct: "20%" },
-    { image: "/assets/house_2.png", name: "벽", pct: "45%" },
-    { image: "/assets/house_3_red.png", name: "지붕", pct: "70%" },
-    { image: "/assets/house_4_red.png", name: "완성", pct: "100%" },
-  ],
-};
-
 export const village = {
   heading: "앱을 꺼도 마을은 남아요",
-  lead: "완성한 집은 마을에 하나씩 모이고, 여섯 채가 차면 다음 마을이 열려요. 다 지은 마을은 지난 마을에 그대로 남고, 다시 켜면 짓던 집부터 이어서 지어요. 날마다 얼마나 공부했는지는 달력에 남아요.",
+  // 한 줄에 한 문장씩 끊어 보여 준다
+  lead: [
+    "30분 공부하면 집 한 채, 여섯 채가 모이면 다음 마을이 열려요.",
+    "==다 지은 마을은 그대로 남고==, 다시 켜면 ==짓던 집부터 이어서== 지어요.",
+    "날마다 공부한 시간은 달력에 남아요.",
+  ],
   shots: [
     {
       kind: "video",
-      wide: true,
-      title: "수달공방 · 마을",
-      src: "/assets/village2.mp4?v=10231120",
-      poster: "/assets/village2_poster.jpg?v=10231120",
-      label: "공부 시간에 따라 마을에 빨간 지붕과 초록 지붕 집이 지어지는 화면",
-      caption: "공부하는 동안 마을에 집이 하나씩 올라가요. 지붕은 빨강, 초록으로 번갈아 올라가요.",
-    },
-    {
-      kind: "video",
-      wide: false,
       title: "수달공방 · 지난 마을",
       src: "/assets/pastvillage.mp4?v=10231120",
       poster: "/assets/pastvillage_poster.jpg?v=10231120",
@@ -140,7 +122,6 @@ export const village = {
     },
     {
       kind: "image",
-      wide: false,
       title: "수달공방 · 기록",
       src: "/assets/shot_record.webp?v=10231120",
       poster: "",
@@ -207,7 +188,6 @@ export const downloadSection = {
 
 export const signupForm = {
   emailLabel: "이메일",
-  heroPlaceholder: "이메일 주소",
   launchPlaceholder: "you@example.com",
   osLabel: "사용하는 OS",
   osOptions: [
@@ -219,8 +199,6 @@ export const signupForm = {
   consentLabel: "(필수) 개인정보 수집·이용에 동의합니다",
   more: "자세히 보기",
   less: "접기",
-  heroNext: "다음 →",
-  nextImage: "/assets/otter_peek.png",
   launchCta: "출시 알림 신청하기",
   pendingCta: "신청하는 중…",
   invalidEmail: "이메일 주소를 확인해 주세요.",

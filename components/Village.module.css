@@ -1,8 +1,9 @@
+/* 지난 마을과 공부 기록을 나란히. 마을이 지어지는 모습은 첫 화면 장면이 보여 준다 */
 .shots {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
-  margin-top: 44px;
+  margin-top: 40px;
   align-items: start;
 }
 
@@ -10,12 +11,8 @@
   margin: 0;
 }
 
-.wide {
-  grid-column: 1 / -1;
-}
-
 .shot figcaption {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--ink-soft);
   margin-top: 10px;
 }

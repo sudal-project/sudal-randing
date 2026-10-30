@@ -1,5 +1,5 @@
 import BuildScene from "@/components/scenes/BuildScene";
-import SignupForm from "@/components/waitlist/SignupForm";
+import HeroSignup from "@/components/waitlist/HeroSignup";
 import { downloadSection, hero } from "@/lib/content";
 import { getDownloadUrl, isReleased } from "@/lib/release";
 import shared from "./shared.module.css";
@@ -21,15 +21,15 @@ export default function Hero() {
             <br />
             <span className={styles.l3}>{l3}</span>
           </h1>
+          <p className={styles.lede}>{hero.lede}</p>
         </div>
-        <div className={styles.copy}>
-          <p>{hero.lede}</p>
+        <div className={styles.copy} id="signup">
           {released ? (
             <a className={shared.btnGo} href={getDownloadUrl()}>
               {downloadSection.ctaLabel}
             </a>
           ) : (
-            <SignupForm variant="hero" />
+            <HeroSignup />
           )}
           <ul className={styles.promise}>
             {(released ? hero.promiseReleased : hero.promise).map((line) => (

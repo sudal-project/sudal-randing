@@ -25,7 +25,7 @@ const icons = {
 
 export default function Privacy() {
   return (
-    <section className={shared.block}>
+    <section className={`${shared.block} ${styles.section}`}>
       <div className="wrap">
         <div className={styles.privacy}>
           <img src={privacy.image} alt="" />

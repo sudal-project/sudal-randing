@@ -51,7 +51,7 @@ const pictures: ReactNode[] = [
 
 export default function Roadmap() {
   return (
-    <section className={`${shared.block} ${shared.paperBg}`} id="roadmap">
+    <section className={`${shared.block} ${shared.paperBg} ${styles.section}`} id="roadmap">
       <div className="wrap">
         <h2 className={shared.h2}>{roadmap.heading}</h2>
         <p className={shared.lead}>{roadmap.lead}</p>

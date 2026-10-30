@@ -38,8 +38,13 @@
   color: var(--roof-green);
 }
 
-.copy p {
-  margin: 0 0 20px;
+.copy {
+  /* 헤더 "출시 알림 받기"로 왔을 때 고정 헤더에 가리지 않게 */
+  scroll-margin-top: 96px;
+}
+
+.lede {
+  margin: 24px 0 0;
   color: var(--ink-soft);
   font-size: 18px;
   max-width: 30em;
@@ -48,7 +53,7 @@
 .promise {
   list-style: none;
   padding: 0;
-  margin: 14px 0 0;
+  margin: 28px 0 0;
   display: grid;
   gap: 4px;
   font-size: 14px;

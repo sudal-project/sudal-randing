@@ -1,6 +1,8 @@
+import { Fragment } from "react";
 import LoopVideo from "@/components/scenes/LoopVideo";
 import { village } from "@/lib/content";
 import MacFrame from "./MacFrame";
+import Marked from "./Marked";
 import shared from "./shared.module.css";
 import styles from "./Village.module.css";
 
@@ -9,10 +11,17 @@ export default function Village() {
     <section className={`${shared.block} ${shared.paperBg}`}>
       <div className="wrap">
         <h2 className={shared.h2}>{village.heading}</h2>
-        <p className={shared.lead}>{village.lead}</p>
+        <p className={shared.lead}>
+          {village.lead.map((line, i) => (
+            <Fragment key={line}>
+              {i > 0 && <br />}
+              <Marked text={line} />
+            </Fragment>
+          ))}
+        </p>
         <div className={styles.shots}>
           {village.shots.map((shot) => (
-            <figure key={shot.src} className={`${styles.shot} ${shot.wide ? styles.wide : ""}`}>
+            <figure key={shot.src} className={styles.shot}>
               <MacFrame title={shot.title}>
                 {shot.kind === "video" ? (
                   <LoopVideo src={shot.src} poster={shot.poster} label={shot.label} />

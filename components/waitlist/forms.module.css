@@ -14,31 +14,8 @@
   outline: none;
 }
 
-.sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-.inline {
-  display: flex;
-  gap: 8px;
-}
-
-.inline input {
-  flex: 1;
-  min-width: 0;
-}
-
 .field {
-  margin-bottom: 20px;
-}
-
-.field.last {
-  margin-bottom: 0;
+  margin-bottom: 16px;
 }
 
 .field > label:not(.consent):not(.check),
@@ -55,7 +32,7 @@
   align-items: flex-start;
   font-size: 14px;
   color: var(--ink-soft);
-  margin-top: 12px;
+  margin-top: 4px;
   line-height: 1.5;
 }
 
@@ -182,8 +159,8 @@
 .submit {
   width: 100%;
   font-size: 19px;
-  padding: 16px;
-  margin-top: 8px;
+  padding: 14px;
+  margin-top: 4px;
 }
 
 .invalid input[type="email"],
@@ -205,8 +182,11 @@
 .msg {
   font-size: 14px;
   color: var(--error);
-  min-height: 1.4em;
   margin-top: 8px;
+}
+
+.msg:empty {
+  display: none;
 }
 
 .hp {
@@ -243,58 +223,4 @@
 .done span {
   font-size: 14px;
   color: var(--ink-soft);
-}
-
-@media (max-width: 520px) {
-  .inline {
-    flex-direction: column;
-  }
-
-  .inline button {
-    width: 100%;
-  }
-}
-
-/* hero 폼에서 "다음"을 누르면 나머지 항목이 펼쳐진다 */
-.reveal {
-  margin-top: 4px;
-  animation: reveal 0.35s ease-out;
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    animation: none;
-  }
-}
-
-/* hero 폼 "다음" 버튼 위의 수달 */
-.nextWrap {
-  position: relative;
-  display: inline-flex;
-}
-
-.nextWrap button {
-  position: relative;
-  width: 100%;
-}
-
-.nextOtter {
-  position: absolute;
-  right: 10px;
-  bottom: calc(100% - 8px);
-  width: 44px;
-  pointer-events: none;
-}
-
-@media (max-width: 520px) {
-  .nextWrap {
-    display: flex;
-  }
 }
