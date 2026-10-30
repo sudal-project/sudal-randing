@@ -40,8 +40,9 @@
 4. **Village**: "30분에 집 한 채"부터 지난 마을 영상, 기록 캡처 (마을이 지어지는 영상은 첫 화면과 겹쳐 뺌)
 5. **Privacy**: "수달은 공부 내용을 보지 않아요"
 6. **Roadmap**: V1(첫 버전 강조) ~ V5, 앞 버전은 실루엣
-7. **Launch** (`#launch`): 출시 후에만 보이는 다운로드 상자
-8. **Footer**
+7. **Mobile**: V6 "컴퓨터를 꺼도, 수달은 계속 일해요" — 폰 예시 화면 + 두 줄 설명
+8. **Launch** (`#launch`): 출시 후에만 보이는 다운로드 상자
+9. **Footer**
 
 `RELEASE_STAGE=released`이면 Header·Hero·Launch·Footer가 다운로드 안내로 바뀐다.
 

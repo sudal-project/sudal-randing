@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Launch from "@/components/Launch";
 import Privacy from "@/components/Privacy";
+import Mobile from "@/components/Mobile";
 import Roadmap from "@/components/Roadmap";
 import Together from "@/components/Together";
 import Village from "@/components/Village";
@@ -42,6 +43,7 @@ export default function Home() {
         <Village />
         <Privacy />
         <Roadmap />
+        <Mobile />
         <Launch />
       </main>
       <Footer />

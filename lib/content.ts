@@ -156,7 +156,7 @@ export const privacy = {
 export const roadmap = {
   heading: "앞으로 지을 것들",
   lead: "마을은 계속 넓어져요. 첫 버전은 집 짓기와 공부 기록부터 시작해요.",
-  note: "다음 기능의 순서는 신청해 주신 분들의 의견을 듣고 정해요.",
+  note: "이 길은 신청해 주신 분들의 의견으로 이어져요.",
   runner: "/assets/otter_run.png",
   versions: [
     {
@@ -170,6 +170,17 @@ export const roadmap = {
     { v: "V4", title: "꾸미기와 상점", items: ["공부 시간으로 모으는 재화", "집과 수달 꾸미기 아이템"] },
     { v: "V5", title: "함께 공부", items: ["친구 수달과 같이 공부", "친구 마을 놀러 가기", "공부 시간을 모아 공동 건물 짓기"] },
   ],
+};
+
+export const mobile = {
+  tag: "V6 · 모바일 앱 · 계획 중",
+  heading: ["컴퓨터를 꺼도,", "수달은 계속 일해요"],
+  lead: "폰에서 공부 시작을 누르면, PC에서 짓던 집을 수달이 이어서 지어요.",
+  // ==…== 안은 형광펜으로 칠한다
+  items: ["마을과 공부 기록을 ==폰에서도== 확인해요."],
+  image: "/assets/roadmap_mobile.webp",
+  alt: "잠금 화면에 공부 중인 수달과 공부 시간이 떠 있는 휴대폰 두 대",
+  caption: "예시 화면이에요. 실제 모습은 달라질 수 있어요.",
 };
 
 export const launch = {
