@@ -31,7 +31,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
         />
       </head>
-      <body>{children}</body>
+      {/* 브라우저 확장(Grammarly 등)이 body에 속성을 붙여도 hydration 경고를 내지 않게 한다 */}
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

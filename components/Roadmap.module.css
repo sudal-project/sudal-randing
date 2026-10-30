@@ -21,8 +21,9 @@ section.section {
 .road::before {
   content: "";
   position: absolute;
-  left: 4%;
-  right: 4%;
+  /* 칸 양 끝까지 끊김 없이 그린다 */
+  left: 0;
+  right: 0;
   top: 80px;
   height: 12px;
   border-radius: 7px;
